@@ -1,7 +1,7 @@
 SUBDIRS = samtools ufasta eviann 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = LICENSE.txt
+EXTRA_DIST = LICENSE
 
 install-special:
 	@echo $(SUBDIRS) | tr ' ' '\n' | grep -v -P '^CA'| while read subdir; do \
