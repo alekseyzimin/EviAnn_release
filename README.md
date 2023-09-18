@@ -6,7 +6,17 @@ EviAnn is a novel annotation pupeline.  EviAnn does not use any de novo gene fin
 
 To install, first download the latest distribution from the github release page https://github.com/alekseyzimin/EviAnn_release/releases.Then untar/unzip the package EviAnn-X.X.X.tgz, cd to the resulting folder and run `./install.sh`.  The installation script will configure and make all necessary packages.  The EviAnn executables will appear under bin/
 
-Only for developers:  you can clone the development tree, but then there are dependencies such as swig and yaggo (http://www.swig.org/ and https://github.com/gmarcais/yaggo) that must be available on the PATH:
+## Dependencies:
+
+EviAnn requires the following dependencies to be installed and available on the $PATH:
+
+1. minimap2: https://github.com/lh3/minimap2
+2. HISAT2: https://github.com/DaehwanKimLab/hisat2
+3. TransDecoder: https://github.com/TransDecoder/TransDecoder
+
+## Only for developers
+
+You can clone the development tree, but then there are dependencies such as swig and yaggo (http://www.swig.org/ and https://github.com/gmarcais/yaggo) that must be available on the PATH:
 
 ```
 $ git clone https://github.com/alekseyzimin/EviAnn_release
