@@ -14,6 +14,8 @@ EviAnn requires the following dependencies to be installed and available on the 
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
 3. TransDecoder: https://github.com/TransDecoder/TransDecoder
 
+The other dependencies are included into the package.
+
 ## Only for developers
 
 You can clone the development tree, but then there are dependencies such as swig and yaggo (http://www.swig.org/ and https://github.com/gmarcais/yaggo) that must be available on the PATH:
