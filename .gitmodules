@@ -1,0 +1,9 @@
+[submodule "samtools"]
+	path = samtools
+	url = git@github.com:/alekseyzimin/samtools
+[submodule "eviann"]
+	path = eviann
+	url = git@github.com:/alekseyzimin/eviann
+[submodule "ufasta"]
+	path = ufasta
+	url = git@github.com:/alekseyzimin/ufasta
