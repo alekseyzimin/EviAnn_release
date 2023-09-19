@@ -90,12 +90,12 @@ $(DISTDIST)/install.sh: install.sh.in
 $(DISTDIST)/PkgConfig.pm: PkgConfig.pm
 	install $< $@
 
-$(DISTDIST)/LICENSE.txt: LICENSE.txt
+$(DISTDIST)/LICENSE: LICENSE
 	install $< $@
 
 DIST_COMPONENTS = $(foreach comp,$(COMPONENTS),$(DISTDIST)/$(comp))
 
-EXTRA_DIST = $(DISTDIST)/install.sh $(DISTDIST)/PkgConfig.pm $(DISTDIST)/LICENSE.txt
+EXTRA_DIST = $(DISTDIST)/install.sh $(DISTDIST)/PkgConfig.pm $(DISTDIST)/LICENSE
 
 $(DISTNAME).tar.gz: clean_distdir $(DIST_COMPONENTS)  $(EXTRA_DIST)
 	tar -zcPf $@ --xform 's|^$(DISTDIR)||' $(DISTDIST)
