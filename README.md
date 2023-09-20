@@ -4,7 +4,7 @@ EviAnn is a novel annotation pipeline.  EviAnn does not use any de novo gene fin
 
 # Installation insructions
 
-To install, first download the latest distribution from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
+To install, first download the latest distribution tarball EviAnn-X.X.X.tgz (not one of the .tar.gz files) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
 ```
 $ tar xvzf EviAnn-X.X.X.tgz
 $ cd EviAnn-X.X.X
