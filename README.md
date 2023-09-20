@@ -19,7 +19,7 @@ EviAnn requires the following external dependencies to be installed and availabl
 1. minimap2: https://github.com/lh3/minimap2
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
 
-The other dependencies are included into the package:
+Here is the list of the dependencies included with the package:
 
 1. stringtie version 2.2.1 -- static executable
 2. gffread version 0.12.7 -- static executable
