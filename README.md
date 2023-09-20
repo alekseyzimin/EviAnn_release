@@ -4,7 +4,7 @@ EviAnn is a novel annotation pipeline.  EviAnn does not use any de novo gene fin
 
 # Installation insructions
 
-To install, first download the latest distribution from the github release page https://github.com/alekseyzimin/EviAnn_release/releases.Then untar/unzip the package EviAnn-X.X.X.tgz, cd to the resulting folder and run `./install.sh`.  The installation script will configure and make all necessary packages.  The EviAnn executables will appear under bin/
+To install, first download the latest distribution from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Then untar/unzip the package EviAnn-X.X.X.tgz, cd to the resulting folder and run `./install.sh`.  The installation script will configure and make all necessary packages.  The EviAnn executables will appear under bin/
 
 ## Dependencies:
 
@@ -12,7 +12,6 @@ EviAnn requires the following dependencies to be installed and available on the 
 
 1. minimap2: https://github.com/lh3/minimap2
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
-3. TransDecoder: https://github.com/TransDecoder/TransDecoder
 
 The other dependencies are included into the package.
 
