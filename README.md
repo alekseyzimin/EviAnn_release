@@ -64,6 +64,7 @@ Options:
 -m <max intron size, default: 100000>
 --debug <debug flag, if used intermediate output files will be kept>
 -v <verbose flag>
+
 -r AND one or more of the -p -u or -e must be supplied.
 ```
 
