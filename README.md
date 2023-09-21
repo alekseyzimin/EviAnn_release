@@ -4,17 +4,33 @@ EviAnn is a novel annotation pipeline.  EviAnn does not use any de novo gene fin
 
 # Installation insructions
 
-To install, first download the latest distribution from the github release page https://github.com/alekseyzimin/EviAnn_release/releases.Then untar/unzip the package EviAnn-X.X.X.tgz, cd to the resulting folder and run `./install.sh`.  The installation script will configure and make all necessary packages.  The EviAnn executables will appear under bin/
+To install, first download the latest distribution tarball EviAnn-X.X.X.tgz (not one of the .tar.gz files) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
+```
+$ tar xvzf EviAnn-X.X.X.tgz
+$ cd EviAnn-X.X.X
+$ ./install.sh
+```
+The installation script will configure and make all necessary packages.  The EviAnn executables will appear under bin/.  You can run EviAnn from anywhere by executing /path_to/EviAnn-X.X.X/bin/eviann.sh
 
 ## Dependencies:
 
-EviAnn requires the following dependencies to be installed and available on the $PATH:
+EviAnn requires the following external dependencies to be installed and available on the $PATH:
 
 1. minimap2: https://github.com/lh3/minimap2
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
-3. TransDecoder: https://github.com/TransDecoder/TransDecoder
 
-The other dependencies are included into the package.
+Here is the list of the dependencies included with the package:
+
+1. stringtie version 2.2.1 -- static executable
+2. gffread version 0.12.7 -- static executable
+3. gffread version 0.12.6 -- static executable
+4. blastp version 2.13.0+ -- static executable
+5. tblastn version 2.13.0 -- static executable
+6. makeblastdb version 2.13.0 -- static executable
+7. exonerate version 2.4.0 -- static executable
+8. TransDecoder version 5.5.0
+9. samtools version 0.1.20
+10. ufasta version 1
 
 ## Only for developers
 
@@ -48,6 +64,7 @@ Options:
 -m <max intron size, default: 100000>
 --debug <debug flag, if used intermediate output files will be kept>
 -v <verbose flag>
+
 -r AND one or more of the -p -u or -e must be supplied.
 ```
 
