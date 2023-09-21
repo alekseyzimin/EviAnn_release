@@ -43,8 +43,10 @@ $ git submodule init
 $ git submodule update
 $ cd ../ufasta && git checkout master
 $ cd ..
+$ make
+$ (cd build/inst/bin && tar xzf TransDecoder-v5.7.1.tar.gz)
 ```
-after that you can run 'make' to compile the package.  The binaries will appear under build/inst/bin.  To create a distribution, run 'make install'.
+To create a distribution, run 'make install'. Run 'make' to compile the package. The binaries will appear under build/inst/bin.  
 Note that on some systems you may encounter a build error due to lack of xlocale.h file, because it was removed in glibc 2.26.  xlocale.h is used in Perl extension modules used by EviAnn.  To fix/work around this error, you can upgrade the Perl extensions, or create a symlink for xlocale.h to /etc/local.h or /usr/include/locale.h, e.g.:
 ```
 ln -s /usr/include/locale.h /usr/include/xlocale.h
