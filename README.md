@@ -1,6 +1,6 @@
-# EviAnn -- evidence based eukaryotic genome annotation pipeline
+# EviAnn -- evidence-based eukaryotic genome annotation pipeline
 
-EviAnn is a novel annotation pipeline.  EviAnn does not use any de novo gene finders in its processing.  It is purely evidence-based.  It uses RNAseq data and/or transcripts and proteins from related species as inputs and produces annotation of protein coding genes and transcripts in GFF3 format.  EviAnn does not require genome repeats to be soft-masked prior to running annotation.  EviAnn is stable and fast. Annotation of A.thaliana genome takes about 2 hours on a single 32-64 core server (not including time for aligning RNAseq reads, which could vary depending on the anmount of data used.) 
+EviAnn (Evidence Annotation) is a novel annotation pipeline.  EviAnn does not use any de novo gene finders in its processing.  It is purely evidence-based.  EviAnn uses RNAseq data and/or transcripts and proteins from related species as inputs, produces annotation of protein coding genes and transcripts, and outputs it in GFF3 format.  EviAnn does not require genome repeats to be soft-masked prior to running annotation.  EviAnn is stable and fast. Annotation of A.thaliana genome takes about 2 hours on a single 32-64 core server (not including time for aligning RNAseq reads, which could vary depending on the anmount of data used.) 
 
 # Installation insructions
 
@@ -28,7 +28,7 @@ Here is the list of the dependencies included with the package:
 5. tblastn version 2.13.0 -- static executable
 6. makeblastdb version 2.13.0 -- static executable
 7. exonerate version 2.4.0 -- static executable
-8. TransDecoder version 5.5.0
+8. TransDecoder version 5.7.1
 9. samtools version 0.1.20
 10. ufasta version 1
 
