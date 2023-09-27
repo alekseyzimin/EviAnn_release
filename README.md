@@ -4,9 +4,9 @@ EviAnn (Evidence Annotation) is a novel annotation pipeline.  EviAnn does not us
 
 # Installation insructions
 
-To install, first download the latest distribution tarball EviAnn-X.X.X.tgz (not one of the .tar.gz files) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
+To install, first download the latest distribution tarball EviAnn-X.X.X.tar.gz (not one of the Source files) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
 ```
-$ tar xvzf EviAnn-X.X.X.tgz
+$ tar xvzf EviAnn-X.X.X.tar.gz
 $ cd EviAnn-X.X.X
 $ ./install.sh
 ```
