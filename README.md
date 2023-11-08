@@ -70,4 +70,30 @@ Options:
 -r AND one or more of the -p -u or -e must be supplied.
 ```
 
+# Example use:
 
+Let us suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and a set of proteins from several related species that you would like to use for annotation.  The proteins from all related species should be concatenated into a single fasta file:
+```
+cat protein1.faa protein2.faa > proteins.faa.
+```
+Next you need to produce a file that lists all RNA-seq data.  We can call this file here paired.txt. This file must contain the names of the reads files with absolute paths, two per line, forward and then reverse, for example:
+```
+$ cat paired.txt
+/path/rna1_R1.fastq /path/rna1_R2.fastq
+/path/rna2_R1.fastq /path/rna2_R2.fastq
+```
+This file can be easily created by the following command (assuming you are in the folder where the RNA-seq data is located):
+```
+paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R1.fastq) > paired.txt
+```
+If some of all of your RNA-seq data is in fasta format, you must indicate that by adding "fasta" tag as the third field on the line, e.g.:
+```
+$ cat paired_mixed.txt
+/path/rna1_R1.fastq /path/rna1_R2.fastq
+/path/rna2_R1.fa /path/rna2_R2.fa fasta
+```
+it is important to specify all input files to EviAnn with absolute paths.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
+```
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired/txt -r /path/proteins.faa
+```
+If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successful stage.  The name of your input genome file is used as prefix for the output files. Assuming your input genome sequence file is genome.fasta, the final annotation files are named genome.fasta.functional_note.pseudo_label.gff, genome.fasta.functional_note.proteins.fasta and genome.fasta.functional_note.transcripts.fasta. These files contain annotation is gff format, and sequences of proteins (amino-acids) and transcripts.
