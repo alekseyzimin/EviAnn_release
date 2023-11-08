@@ -72,9 +72,9 @@ Options:
 
 # Example use:
 
-Let us suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and a set of proteins from several related species that you would like to use for annotation.  The proteins from all related species should be concatenated into a single fasta file:
+Let us suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and a set of proteins from several related species that you would like to use for annotation.  The proteins from all related species must be concatenated into a single fasta file:
 ```
-cat protein1.faa protein2.faa > proteins.faa.
+cat protein1.faa protein2.faa > proteins.faa
 ```
 Next you need to produce a file that lists all RNA-seq data.  We can call this file here paired.txt. This file must contain the names of the reads files with absolute paths, two per line, forward and then reverse, for example:
 ```
