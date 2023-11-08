@@ -76,7 +76,7 @@ Let us suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.f
 ```
 cat protein1.faa protein2.faa > proteins.faa
 ```
-Next you need to produce a file that lists all RNA-seq data.  We can call this file here paired.txt. This file must contain the names of the reads files with absolute paths, two per line, forward and then reverse, for example:
+Next you need to create a file that lists all RNA-seq data (e.g. paired.txt here). This file must contain the names of the reads files with absolute paths, two per line, forward and then reverse, for example:
 ```
 $ cat paired.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
@@ -84,9 +84,9 @@ $ cat paired.txt
 ```
 This file can be easily created by the following command (assuming you are in the folder where the RNA-seq data is located):
 ```
-paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R1.fastq) > paired.txt
+paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R2.fastq) > paired.txt
 ```
-If some of all of your RNA-seq data is in fasta format, you must indicate that by adding "fasta" tag as the third field on the line, e.g.:
+Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, you must indicate that by adding "fasta" tag as the third field on the line, e.g.:
 ```
 $ cat paired_mixed.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
