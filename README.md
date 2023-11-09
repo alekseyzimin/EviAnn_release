@@ -95,7 +95,7 @@ $ cat paired_mixed.txt
 ```
 it is important to specify all input files to EviAnn with absolute paths.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
 ```
-/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired/txt -r /path/proteins.faa
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired.txt -r /path/proteins.faa
 ```
 Substitute version number for the X's.
 If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  The name of the input genome file is used as prefix for the output files. Assuming the input genome sequence file is named genome.fasta, the final annotation files are named genome.fasta.functional_note.pseudo_label.gff, genome.fasta.functional_note.proteins.fasta and genome.fasta.functional_note.transcripts.fasta. These files contain annotation is gff format, sequences of proteins (amino-acids) and transcripts.
