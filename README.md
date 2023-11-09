@@ -86,14 +86,16 @@ This file can be easily created by the following command (assuming you are in th
 ```
 paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R2.fastq) > paired.txt
 ```
-Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, you must indicate that by adding "fasta" tag as the third field on the line, e.g.:
+Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format you must indicate that by adding "fasta" or "bam" tag as the third field on the line, e.g.:
 ```
 $ cat paired_mixed.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
 /path/rna2_R1.fa /path/rna2_R2.fa fasta
+/path/rna3.bam bam
 ```
 it is important to specify all input files to EviAnn with absolute paths.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
 ```
 /path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired/txt -r /path/proteins.faa
 ```
+Substitute version number for the X's.
 If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  The name of the input genome file is used as prefix for the output files. Assuming the input genome sequence file is named genome.fasta, the final annotation files are named genome.fasta.functional_note.pseudo_label.gff, genome.fasta.functional_note.proteins.fasta and genome.fasta.functional_note.transcripts.fasta. These files contain annotation is gff format, sequences of proteins (amino-acids) and transcripts.
