@@ -86,7 +86,7 @@ This file can be easily created by the following command (assuming you are in th
 ```
 paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R2.fastq) > paired.txt
 ```
-Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format you must indicate that by adding "fasta" or "bam" tag as the third field on the line, e.g.:
+Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format you must indicate that by adding "fasta" or "bam" tag as the last field on the line, e.g.:
 ```
 $ cat paired_mixed.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
