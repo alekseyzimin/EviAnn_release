@@ -75,7 +75,7 @@ Options:
 
 # Example use:
 
-Suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and a set of proteins from several related species that you would like to use for annotation.  The proteins from all related species must be concatenated into a single fasta file:
+Suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and protein sequences from several related species that you would like to use for annotation.  The proteins from all related species must be in fasta format.  The individual files must be concatenated into a single fasta file:
 ```
 cat protein1.faa protein2.faa > proteins.faa
 ```
@@ -89,7 +89,7 @@ This file can be easily created by the following command (assuming you are in th
 ```
 paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R2.fastq) > paired.txt
 ```
-Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format you must indicate that by adding "fasta" or "bam" tag as the last field on the line, e.g.:
+Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format you can use the fasta/BAM files and indicate that by adding "fasta" or "bam" tag as the last field on the line, e.g.:
 ```
 $ cat paired_mixed.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
@@ -101,4 +101,7 @@ it is important to specify all input files to EviAnn with absolute paths.  If yo
 /path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired.txt -r /path/proteins.faa
 ```
 Substitute version number for the X's.
-If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  The name of the input genome file is used as prefix for the output files. Assuming the input genome sequence file is named genome.fasta, the final annotation files are named genome.fasta.functional_note.pseudo_label.gff, genome.fasta.functional_note.proteins.fasta and genome.fasta.functional_note.transcripts.fasta. These files contain annotation is gff format, sequences of proteins (amino-acids) and transcripts.
+
+If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  The name of the input genome file is used as prefix for the output files. 
+
+EviAnn uses the input genome file name as prefix for intermediate/output files.  If the input genome file is genome.fasta, then the final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is gff format, sequences of proteins (amino-acids) and transcripts.
