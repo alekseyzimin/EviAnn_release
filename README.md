@@ -57,22 +57,25 @@ ln -s /usr/include/locale.h /usr/include/xlocale.h
 $ ./build/inst/bin/eviann.sh -h
 Usage: eviann.sh [options]
 Options:
--t <number of threads, default:1>
--g <MANDATORY:genome fasta file with full path>
--p <file containing list of filenames of paired Illumina reads from RNAseq experiments, one pair of /path/filename per line; fastq is expected by default, if files are fasta, add "fasta" as the third field on the line>
--u <file containing list of filenames of unpaired Illumina reads from RNAseq experiments, one /path/filename per line; fastq is expected by default, if files are fasta, add "fasta" as the third field on the line>
--e <fasta file with transcripts from related species>
--r <fasta file of protein sequences from related species>
--m <max intron size, default: 100000>
---debug <debug flag, if used intermediate output files will be kept>
--v <verbose flag>
+-t <int: number of threads, default:1>
+-g <string: MANDATORY:genome fasta file with full path>
+-p <string: file containing list of filenames of paired Illumina reads from RNAseq experiments, one pair of /path/filename per line; fastq is expected by default, if files are fasta, add "fasta" as the third field on the line; if the reads are already aligned in bam format, put /path/filename.bam and add tag "bam" (without quotes) as second field on the line>
+-u <string: file containing list of filenames of unpaired Illumina reads from RNAseq experiments, one /path/filename per line; fastq is expected by default, if files are fasta, add "fasta" as the third field on the line; if the reads are already aligned in bam format, put /path/filename.bam and add tag "bam" (without quotes) as second field on the line>
+-e <string: fasta file with transcripts from related species>
+-r <string: fasta file of protein sequences from related species>
+-m <int: max intron size, default: 100000>
+-l <flag: liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set>
+-f <flag: perform functional annotation, default: not set>
+--debug <flag: debug, if used intermediate output files will be kept, default: not set>
+-v <flag: verbose run, defalut: not set>
+--version report version
 
 -r AND one or more of the -p -u or -e must be supplied.
 ```
 
 # Example use:
 
-Let us suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and a set of proteins from several related species that you would like to use for annotation.  The proteins from all related species must be concatenated into a single fasta file:
+Suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and a set of proteins from several related species that you would like to use for annotation.  The proteins from all related species must be concatenated into a single fasta file:
 ```
 cat protein1.faa protein2.faa > proteins.faa
 ```
