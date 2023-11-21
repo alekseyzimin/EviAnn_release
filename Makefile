@@ -1,6 +1,6 @@
 # EviAnn version
 NAME=EviAnn
-VERSION = 1.0.6
+VERSION = 1.0.7
 NCPU = $(shell grep -c '^processor' /proc/cpuinfo 2>/dev/null || sysctl hw.ncpu 2>/dev/null || echo 1)
 
 # Component versions
@@ -44,7 +44,7 @@ $(SHORTCUTS):
 
 
 #############################################
-# Tag all components with MaSuRCA's version #
+# Tag all components with EviAnn's version #
 #############################################
 tag:
 	git submodule foreach git tag -f $(NAME)-$(VERSION)
