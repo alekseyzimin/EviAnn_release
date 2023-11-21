@@ -72,12 +72,17 @@ Options:
 
 -r AND one or more of the -p -u or -e must be supplied.
 ```
+EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  
+
+EviAnn uses the input genome file name as prefix for intermediate/output files.  If the input genome file is genome.fasta, then the final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is gff format, sequences of proteins (amino-acids) and transcripts.
 
 # Example use:
 
-Suppose that you have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and protein sequences from several related species that you would like to use for annotation.  The proteins from all related species must be in fasta format.  The individual files must be concatenated into a single fasta file:
+## Case 1. Annotation with RNA-seq data and proteins form related species
+
+Suppose that you are annotating genome sequence in genome.fasta.  You have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and protein sequences from several related species that you would like to use for annotation.  The proteins from all related species must be in fasta format.  The individual files containing protein sequences must be concatenated into a single fasta file:
 ```
-cat protein1.faa protein2.faa > proteins.faa
+cat protein1.faa protein2.faa > proteins_all.faa
 ```
 Next you need to create a file that lists all RNA-seq data (e.g. paired.txt here). This file must contain the names of the reads files with absolute paths, two per line, forward and then reverse, for example:
 ```
@@ -89,7 +94,7 @@ This file can be easily created by the following command (assuming you are in th
 ```
 paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R2.fastq) > paired.txt
 ```
-Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format you can use the fasta/BAM files and indicate that by adding "fasta" or "bam" tag as the last field on the line, e.g.:
+Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format, you can use the fasta/BAM files and indicate that by adding "fasta" or "bam" tag as the last field on the line, e.g.:
 ```
 $ cat paired_mixed.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
@@ -98,10 +103,25 @@ $ cat paired_mixed.txt
 ```
 it is important to specify all input files to EviAnn with absolute paths.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
 ```
-/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired.txt -r /path/proteins.faa
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired.txt -r /path/proteins_all.faa
 ```
-Substitute version number for the X's.
+Substitute EviAnn version number for the X's.
 
-If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  The name of the input genome file is used as prefix for the output files. 
+## Case 2. No RNA-seq data, annotation with transcripts and proteins from one or more related species
 
-EviAnn uses the input genome file name as prefix for intermediate/output files.  If the input genome file is genome.fasta, then the final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is gff format, sequences of proteins (amino-acids) and transcripts.
+Suppose again that you are annotating genome sequence in genome.fasta.   In this scenario we assume that you have gff files containing the annotations of the related species that you are going to use as evidence.  The genome sequences for these species are also needed. The first step is to create transcripts and proteins files for each species with the following command:
+```
+/eviann_path/bin/gffread -W -y species1_prot.faa -w species1_transc.fa -g species1_genome.fa species1.gff
+/eviann_path/bin/gffread -W -y species2_prot.faa -w species2_transc.fa -g species2_genome.fa species2.gff
+etc...
+```
+The next step is to concatenate all proteins files and all transcript files into a single file:
+```
+cat species*_transc.fa > transcripts.fa
+cat species*_prot.fa > proteins.faa
+```
+Then tou can run EviAnn with 24 threads (for example) as follows:
+```
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa
+```
+Substitute EviAnn version number for the X's.
