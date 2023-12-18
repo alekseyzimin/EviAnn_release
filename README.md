@@ -120,7 +120,7 @@ The next step is to concatenate all proteins files and all transcript files into
 cat species*_transc.fa > transcripts.fa
 cat species*_prot.fa > proteins.faa
 ```
-Then tou can run EviAnn with 24 threads (for example) as follows:
+Then you can run EviAnn with 24 threads (for example) as follows:
 ```
 /path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa
 ```
