@@ -21,7 +21,7 @@ EviAnn requires the following external dependencies to be installed and availabl
 
 Here is the list of the dependencies included with the package:
 
-1. stringtie version 2.2.1 -- static executable
+1. StringTie version 2.2.1 -- static executable
 2. gffread version 0.12.7 -- static executable
 3. gffread version 0.12.6 -- static executable
 4. blastp version 2.13.0+ -- static executable
@@ -47,7 +47,7 @@ $ make
 $ (cd build/inst/bin && tar xzf TransDecoder-v5.7.1.tar.gz)
 ```
 To create a distribution, run 'make install'. Run 'make' to compile the package. The binaries will appear under build/inst/bin.  
-Note that on some systems you may encounter a build error due to lack of xlocale.h file, because it was removed in glibc 2.26.  xlocale.h is used in Perl extension modules used by EviAnn.  To fix/work around this error, you can upgrade the Perl extensions, or create a symlink for xlocale.h to /etc/local.h or /usr/include/locale.h, e.g.:
+Note that on some systems you may encounter a build error due to lack of xlocale.h file, because it was removed in glibc 2.26.  xlocale.h is used in Perl extension modules used by EviAnn.  To work around this error, you can upgrade the Perl extensions, or create a symlink for xlocale.h to /etc/local.h or /usr/include/locale.h, e.g.:
 ```
 ln -s /usr/include/locale.h /usr/include/xlocale.h
 ```
@@ -66,7 +66,7 @@ Options:
 -m <int: max intron size, default: 100000>
 -l <flag: liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set>
 -f <flag: perform functional annotation, default: not set>
---debug <flag: debug, if used intermediate output files will be kept, default: not set>
+--debug <flag: debug, if used more intermediate output files will be kept, default: not set>
 -v <flag: verbose run, defalut: not set>
 --version report version
 
@@ -84,7 +84,7 @@ Suppose that you are annotating genome sequence in genome.fasta.  You have two p
 ```
 cat protein1.faa protein2.faa > proteins_all.faa
 ```
-Next you need to create a file that lists all RNA-seq data (e.g. paired.txt here). This file must contain the names of the reads files with absolute paths, two per line, forward and then reverse, for example:
+Next you need to create a file that lists all RNA-seq data (e.g. paired.txt here). This file must contain the names of the reads files with absolute or relative (v1.0.8 and up) paths, two per line, forward and then reverse, for example:
 ```
 $ cat paired.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
@@ -101,7 +101,7 @@ $ cat paired_mixed.txt
 /path/rna2_R1.fa /path/rna2_R2.fa fasta
 /path/rna3.bam bam
 ```
-it is important to specify all input files to EviAnn with absolute paths.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
+it is important to specify all input files to EviAnn with absolute paths if you are using a version earlier than 1.0.8.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
 ```
 /path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired.txt -r /path/proteins_all.faa
 ```
