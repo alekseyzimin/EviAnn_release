@@ -109,7 +109,7 @@ Substitute EviAnn version number for the X's.
 
 ## Case 2. No RNA-seq data, annotation with transcripts and proteins from one or more related species
 
-Suppose again that you are annotating genome sequence in genome.fasta.   In this scenario we assume that you have gff files containing the annotations of the related species that you are going to use as evidence.  The genome sequences for these species are also needed. The first step is to create transcripts and proteins files for each species with the following command:
+Suppose again that you are annotating genome sequence in genome.fasta.   In this scenario we assume that you have gff files containing the annotations of the related species that you are going to use as evidence. This scenario can also be descibed as "lifting over" annotation from one or more related species. The genome sequences for these species are also needed. The first step is to create transcripts and proteins files for each species with the following command:
 ```
 /eviann_path/bin/gffread -W -y species1_prot.faa -w species1_transc.fa -g species1_genome.fa species1.gff
 /eviann_path/bin/gffread -W -y species2_prot.faa -w species2_transc.fa -g species2_genome.fa species2.gff
@@ -122,6 +122,6 @@ cat species*_prot.fa > proteins.faa
 ```
 Then you can run EviAnn with 24 threads (for example) as follows:
 ```
-/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa -l
 ```
-Substitute EviAnn version number for the X's.
+Make sure that you use -l switch!  This will optimize internal parameters for liftover run. Substitute EviAnn version number for the X's.
