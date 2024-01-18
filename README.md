@@ -140,14 +140,14 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI3](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/4e4698df-de08-4a3c-82fe-221a49e8447d)
 
-##Click on the lineage name in bold.
+## Click on the lineage name in bold.
 
 ![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
 
-##Look for the ref "protin" link on the upper right. If this number is > 100,000, click on the number, otherwise go back and choose lineage that is higher up on the tree.
+## Look for the ref "Protein" link on the upper right. If this number is > 100,000, click on the number, otherwise go back and choose lineage that is higher up in the tree.
 
 ![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
 
-##Click on Send to, choose "File" format "FASTA", and clisk "Create File" button.  Save the file as "proteins.faa".  You can use this file as input proteins to EviAnn.
+## Click "Send to", choose "File" format "FASTA", and click "Create File" button.  Save the file as "proteins.faa".  You can use this file as input proteins to EviAnn.
 
 ![NCBI6](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/6be1aa9e-8634-428f-afd4-a5502dd6d412)
