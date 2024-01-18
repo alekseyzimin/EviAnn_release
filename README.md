@@ -132,11 +132,11 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI1](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/bcfa658b-e998-4087-a046-adab51da86c8)
 
-## Enter the organism name into the search field and click Search.
+## Enter the organism name into the search field and click "Search".
 
 ![NCBI2](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/0912ef8c-bd01-49cb-acbe-16f5b4cd7fff)
 
-## NCBI will find the lineage and species name.  First use the leftmost link in the lineage list.  If the subsequent steps result in fewer than 100,000 protein hits, you can move up to the next available lineage level (in theis case Maleae).
+## NCBI will find the lineage and species name.  First try using the leftmost link in the lineage list (Malus).  If the subsequent steps result in fewer than 100,000 protein hits, you can move up to the next available lineage level (in this case Maleae).
 
 ![NCBI3](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/4e4698df-de08-4a3c-82fe-221a49e8447d)
 
