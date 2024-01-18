@@ -126,7 +126,7 @@ Then you can run EviAnn with 24 threads (for example) as follows:
 ```
 Make sure that you use -l switch!  This will optimize internal parameters for liftover run. Substitute EviAnn version number for the X's.
 
-## Downloading protein evidence from NCBI
+# Downloading protein evidence from NCBI
 Here are the steps you can follow to create and download protein evidence file from NCBI.  Go to https://www.ncbi.nlm.nih.gov/taxonomy:
 ![NCBI1](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/bcfa658b-e998-4087-a046-adab51da86c8)
 Enter the organism name into the search field and click Search.
