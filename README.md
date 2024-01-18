@@ -125,3 +125,17 @@ Then you can run EviAnn with 24 threads (for example) as follows:
 /path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa -l
 ```
 Make sure that you use -l switch!  This will optimize internal parameters for liftover run. Substitute EviAnn version number for the X's.
+
+## Downloading protein evidence from NCBI
+Here are the steps you can follow to create and download protein evidence file from NCBI.  Go to https://www.ncbi.nlm.nih.gov/taxonomy:
+![NCBI1](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/bcfa658b-e998-4087-a046-adab51da86c8)
+Enter the organism name into the search field and click Search.
+![NCBI2](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/0912ef8c-bd01-49cb-acbe-16f5b4cd7fff)
+NCBI will find the lineage and species name.  First use the leftmost link in the lineage list.  If the subsequent steps result in fewer than 100,000 protein hits, you can move up to the next available lineage level (in theis case Maleae).
+![NCBI3](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/4e4698df-de08-4a3c-82fe-221a49e8447d)
+Click on the lineage name in bold.
+![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
+Look for the ref "protin" link on the upper right. If this number is > 100,000, click on the number, otherwise go back and choose lineage that is higher up on the tree.
+![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
+Click on Send to, choose "File" format "FASTA", and clisk "Create File" button.  Save the file as "proteins.faa".  You can use this file as input proteins to EviAnn.
+![NCBI6](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/6be1aa9e-8634-428f-afd4-a5502dd6d412)
