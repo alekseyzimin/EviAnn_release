@@ -148,6 +148,6 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
 
-## Click "Send to", choose "File" format "FASTA", and click "Create File" button.  Save the file as "proteins.faa".  You can use this file as input proteins to EviAnn.
+## Click "Send to", choose "File" format "FASTA", and click "Create File" button.  Save the file as "proteins.faa".  You can use this file as input proteins to EviAnn ( -r proteins.faa ).
 
 ![NCBI6](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/6be1aa9e-8634-428f-afd4-a5502dd6d412)
