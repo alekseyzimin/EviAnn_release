@@ -144,7 +144,7 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
 
-## 5. Look for the "Protein" link on the upper right. If the number on the right of the link is > 100,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.
+## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 100,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.
 
 ![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
 
