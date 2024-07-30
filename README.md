@@ -2,9 +2,9 @@
 
 EviAnn (Evidence Annotation) is a novel annotation software.  EviAnn does not use any de novo gene finders in its processing.  It is purely evidence-based.  EviAnn uses RNAseq data and/or transcripts, and proteins from related species as inputs.  EviAnn produces annotation of protein coding genes and transcripts, and outputs it in GFF3 format.  EviAnn does not require genome repeats to be soft-masked prior to running annotation.  EviAnn is stable and fast. Annotation of A.thaliana genome takes about 2 hours on a single 32-64 core server (not including time for aligning RNAseq reads, which could vary depending on the amount of data used.) 
 
-# Installation insructions
+# Installation instructions
 
-To install, first download the latest distribution tarball EviAnn-X.X.X.tar.gz (not one of the Source files) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
+To install, first download the latest distribution tarball EviAnn-X.X.X.tar.gz (not one of the Source code files!) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
 ```
 $ tar xvzf EviAnn-X.X.X.tar.gz
 $ cd EviAnn-X.X.X
@@ -21,7 +21,7 @@ EviAnn requires the following external dependencies to be installed and availabl
 
 Here is the list of the dependencies included with the package:
 
-1. stringtie version 2.2.1 -- static executable
+1. StringTie version 2.2.1 -- static executable
 2. gffread version 0.12.7 -- static executable
 3. gffread version 0.12.6 -- static executable
 4. blastp version 2.13.0+ -- static executable
@@ -47,7 +47,7 @@ $ make
 $ (cd build/inst/bin && tar xzf TransDecoder-v5.7.1.tar.gz)
 ```
 To create a distribution, run 'make install'. Run 'make' to compile the package. The binaries will appear under build/inst/bin.  
-Note that on some systems you may encounter a build error due to lack of xlocale.h file, because it was removed in glibc 2.26.  xlocale.h is used in Perl extension modules used by EviAnn.  To fix/work around this error, you can upgrade the Perl extensions, or create a symlink for xlocale.h to /etc/local.h or /usr/include/locale.h, e.g.:
+Note that on some systems you may encounter a build error due to lack of xlocale.h file, because it was removed in glibc 2.26.  xlocale.h is used in Perl extension modules used by EviAnn.  To work around this error, you can upgrade the Perl extensions, or create a symlink for xlocale.h to /etc/local.h or /usr/include/locale.h, e.g.:
 ```
 ln -s /usr/include/locale.h /usr/include/xlocale.h
 ```
@@ -66,7 +66,7 @@ Options:
 -m <int: max intron size, default: 100000>
 -l <flag: liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set>
 -f <flag: perform functional annotation, default: not set>
---debug <flag: debug, if used intermediate output files will be kept, default: not set>
+--debug <flag: debug, if used more intermediate output files will be kept, default: not set>
 -v <flag: verbose run, defalut: not set>
 --version report version
 
@@ -84,7 +84,7 @@ Suppose that you are annotating genome sequence in genome.fasta.  You have two p
 ```
 cat protein1.faa protein2.faa > proteins_all.faa
 ```
-Next you need to create a file that lists all RNA-seq data (e.g. paired.txt here). This file must contain the names of the reads files with absolute paths, two per line, forward and then reverse, for example:
+Next you need to create a file that lists all RNA-seq data (e.g. paired.txt here). This file must contain the names of the reads files with absolute or relative (v1.0.8 and up) paths, two per line, forward and then reverse, for example:
 ```
 $ cat paired.txt
 /path/rna1_R1.fastq /path/rna1_R2.fastq
@@ -101,7 +101,7 @@ $ cat paired_mixed.txt
 /path/rna2_R1.fa /path/rna2_R2.fa fasta
 /path/rna3.bam bam
 ```
-it is important to specify all input files to EviAnn with absolute paths.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
+it is important to specify all input files to EviAnn with absolute paths if you are using a version earlier than 1.0.8.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
 ```
 /path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired.txt -r /path/proteins_all.faa
 ```
@@ -109,7 +109,7 @@ Substitute EviAnn version number for the X's.
 
 ## Case 2. No RNA-seq data, annotation with transcripts and proteins from one or more related species
 
-Suppose again that you are annotating genome sequence in genome.fasta.   In this scenario we assume that you have gff files containing the annotations of the related species that you are going to use as evidence.  The genome sequences for these species are also needed. The first step is to create transcripts and proteins files for each species with the following command:
+Suppose again that you are annotating genome sequence in genome.fasta.   In this scenario we assume that you have gff files containing the annotations of the related species that you are going to use as evidence. This scenario can also be descibed as "lifting over" annotation from one or more related species. The genome sequences for these species are also needed. The first step is to create transcripts and proteins files for each species with the following command:
 ```
 /eviann_path/bin/gffread -W -y species1_prot.faa -w species1_transc.fa -g species1_genome.fa species1.gff
 /eviann_path/bin/gffread -W -y species2_prot.faa -w species2_transc.fa -g species2_genome.fa species2.gff
@@ -120,8 +120,34 @@ The next step is to concatenate all proteins files and all transcript files into
 cat species*_transc.fa > transcripts.fa
 cat species*_prot.fa > proteins.faa
 ```
-Then tou can run EviAnn with 24 threads (for example) as follows:
+Then you can run EviAnn with 24 threads (for example) as follows:
 ```
-/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa -l
 ```
-Substitute EviAnn version number for the X's.
+Make sure that you use -l switch!  This will optimize internal parameters for liftover run. Substitute EviAnn version number for the X's.
+
+# Downloading protein evidence from NCBI
+
+## 1. Here are the steps you can follow to create and download protein evidence file from NCBI.  Go to https://www.ncbi.nlm.nih.gov/taxonomy:
+
+![NCBI1](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/bcfa658b-e998-4087-a046-adab51da86c8)
+
+## 2. Enter the organism name into the search field and click "Search".
+
+![NCBI2](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/0912ef8c-bd01-49cb-acbe-16f5b4cd7fff)
+
+## 3. NCBI will find the lineage and species name.  First try using the rightmost link in the lineage list (Malus).  If the subsequent steps result in fewer than 100,000 protein hits, you can move up to the next available lineage level on the left (in this case Maleae).
+
+![NCBI3](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/4e4698df-de08-4a3c-82fe-221a49e8447d)
+
+## 4. Click on the lineage name in bold.
+
+![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
+
+## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 100,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.
+
+![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
+
+## 6. Click "Send to", choose "File" format "FASTA", and click "Create File" button.  Save the file as "proteins.faa".  You can use this file as input proteins to EviAnn ( -r proteins.faa ).
+
+![NCBI6](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/6be1aa9e-8634-428f-afd4-a5502dd6d412)
