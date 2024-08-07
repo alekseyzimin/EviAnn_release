@@ -1,6 +1,6 @@
 # EviAnn -- evidence-based eukaryotic genome annotation software
 
-EviAnn (Evidence Annotation) is novel genome annotation software.  EviAnn does not use any ab initio gene finders in its processing.  It is purely evidence-based.  EviAnn derives protein-coding gene annotations from RNAseq data and/or transcripts, and proteins from related species.  EviAnn outputs annotations in GFF3 format.  EviAnn does not require genome repeats to be soft-masked prior to running annotation.  EviAnn is stable and fast. Annotation of A.thaliana genome takes about 2 hours on a single 32-64 core server (not including time for aligning RNAseq reads, which could vary depending on the amount of data used.) 
+EviAnn (Evidence Annotation) is novel genome annotation software. It is purely evidence-based. EviAnn derives protein-coding gene annotations from RNAseq data and/or transcripts, and proteins from related species. EviAnn outputs annotations in GFF3 format. EviAnn does not require genome repeats to be soft-masked prior to running annotation. EviAnn is stable and fast. Annotation of A.thaliana genome takes about 2 hours on a single 32-64 core server (not including time for aligning RNAseq reads, which could vary depending on the amount of data used.) 
 
 # Installation instructions
 
