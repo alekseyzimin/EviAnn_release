@@ -74,7 +74,7 @@ Options:
 ```
 EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  
 
-EviAnn uses the input genome file name as <PREFIX> for intermediate/output files.  If the input genome file is genome.fasta, then the <PREFIX> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  Per GFF3 specification, stop codons are included into the CDS records, the stop codon is the last three letters of the CDS.
+EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output files.  If the input genome file is genome.fasta, then the \<PREFIX\> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  Per GFF3 specification, stop codons are included into the CDS records, the stop codon is the last three letters of the CDS.
 
 # Interpreting the output
 
@@ -83,7 +83,7 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
 3. EvidenceProteinID -- this is the ID of the protein that was used as evidence for the CDS annotation for this transcript. If the EvidenceProteinID starts with XLOC... then the transcript was annotated from the transcript alignment alone, please refer to the EvidenceTranscriptID for the evidence
-4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. The assembled transcripts are listed in <PREFIX>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is "<transcript_name>:<number of RNA-seq experiments containing the transcript>:<maximum TPM>"
+4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. The assembled transcripts are listed in \<PREFIX\>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
 5. StartCodon -- this is the start codon in the CDS
 6. StopCodon -- this is the stop codon in the CDS
 7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code of "=" or"k"
