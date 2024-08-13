@@ -31,7 +31,8 @@ Here is the list of the dependencies included with the package:
 8. TransDecoder version 5.7.1
 9. samtools version 0.1.20
 10. ufasta version 1
-11. miniprot v0.13 -- static executable
+11. SNAP version 4ad1e95
+12. miniprot v0.13 -- static executable
 
 ## Only for developers
 
