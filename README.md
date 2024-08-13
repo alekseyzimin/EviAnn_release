@@ -1,6 +1,6 @@
 # EviAnn -- evidence-based eukaryotic genome annotation software
 
-EviAnn (Evidence Annotation) is novel genome annotation software. It is purely evidence-based. EviAnn derives protein-coding gene annotations from RNAseq data and/or transcripts, and alignments of proteins from related species. EviAnn outputs annotations in GFF3 format. EviAnn does not require genome repeats to be soft-masked prior to running annotation. EviAnn is stable and fast. Annotation of A.thaliana genome takes less than 2 hours, and a mammalian genome is annotated in less than 8 hours on a single 32-64 core server (not including time for aligning RNAseq reads, which could vary depending on the amount of data used, and may not be needed if BAM files are provided). 
+EviAnn (Evidence Annotation) is novel genome annotation software. It is purely evidence-based. EviAnn derives protein-coding gene annotations from RNAseq data and/or transcripts, and alignments of proteins from related species. EviAnn outputs annotations in GFF3 format. EviAnn does not require genome repeats to be soft-masked prior to running annotation. EviAnn is stable and fast. Annotation of a mouse (M.musculus)  genome takes 2.5 hours on a single 24 core Intel Xeon Gold server (assuming input of aligned RNA-seq reads in BAM format and ~346Mb of protein sequences from several related species including human). 
 
 # Installation instructions
 
@@ -31,6 +31,7 @@ Here is the list of the dependencies included with the package:
 8. TransDecoder version 5.7.1
 9. samtools version 0.1.20
 10. ufasta version 1
+11. miniprot v0.13 -- static executable
 
 ## Only for developers
 
@@ -74,7 +75,21 @@ Options:
 ```
 EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  
 
-EviAnn uses the input genome file name as prefix for intermediate/output files.  If the input genome file is genome.fasta, then the final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is gff format, sequences of proteins (amino-acids) and transcripts.
+EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output files.  If the input genome file is genome.fasta, then the \<PREFIX\> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  Per GFF3 specification, stop codons are included into the CDS records, the stop codon is the last three letters of the CDS.
+
+# Interpreting the output
+
+EviAnn outputs the annotation in GFF3 format, along with translated protein sequences and transcripts in FASTA format. Per GFF3 convention, stop codon is included into the CDS. Every "mRNA" line contains the following attributes:
+
+1. ID -- this is the transcript ID assigned by EviAnn
+2. Parent -- this is the ID of the parent feature
+3. EvidenceProteinID -- this is the ID of the protein that was used as evidence for the CDS annotation for this transcript. If the EvidenceProteinID starts with XLOC... then the transcript was annotated from the transcript alignment alone, please refer to the EvidenceTranscriptID for the evidence
+4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. The assembled transcripts are listed in \<PREFIX\>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
+5. StartCodon -- this is the start codon in the CDS
+6. StopCodon -- this is the stop codon in the CDS
+7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code of "=" or"k"
+8. Evidence -- this is the type of evidence that was used to annotate the transcript/CDS.  Possible values are: "complete", meaning that both transcript and protein alignment data was used, "protein_only", meaning that the only protein alignment data was used and "transcript_only" meaning that only transcript data was used.  For "transcript_only" evidence the CDS was derived with TransDecoder with subsequent confirmation by alignment to Uniprot database
+9. Optional: pseudo-true -- this tag is present if EviAnn designated the gene/transcript/CDS is processed pseudo gene
 
 # Example use:
 
