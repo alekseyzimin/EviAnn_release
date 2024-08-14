@@ -56,46 +56,45 @@ ln -s /usr/include/locale.h /usr/include/xlocale.h
 
 # Usage:
 ```
-Usage: /path/eviann.sh [options]
+Usage: eviann.sh [options]
 Options:
--t int number of threads, default:1
--g /path/file MANDATORY:genome fasta file
--r /path/file file containing list of filenames of reads from transcriptome sequencing experiments, default:none
+ -t INT     number of threads, default: 1
+ -g FILE    MANDATORY:genome fasta file default: none
+ -r FILE    file containing list of filenames of reads from transcriptome sequencing experiments, default: none
  
- FORMAT OF THIS FILE:
- Each line in the file must refer to sequencing data from a single experiment.
- Please combine runs so that one file/pair/triplet of files contains a single sample.  
- The lines are in the following format:
+  FORMAT OF THIS FILE:
+  Each line in the file must refer to sequencing data from a single experiment.
+  Please combine runs so that one file/pair/triplet of files contains a single sample.  
+  The lines are in the following format:
  
-/path/filename /path/filename /path/filename tag
- or
-/path/filename /path/filename tag
- or
-/path/filename tag
+ /path/filename /path/filename /path/filename tag
+  or
+ /path/filename /path/filename tag
+  or
+ /path/filename tag
 
- Fields are space-separated, no leading space. "tag" indicates type of data referred to in the preceding fields.  Possible values are:
+  Fields are space-separated, no leading space. "tag" indicates type of data referred to in the preceding fields.  Possible values are:
  
- fastq -- indicates the data is Illumina RNA-seq in fastq format, expects one or a pair of /path/filename.fastq before the tag
- fasta -- indicates the data is Illumina RNA-seq in fasta format, expects one or a pair of /path/filename.fasta before the tag
- bam -- indicates the data is aligned Illumina RNA-seq reads, expects one /path/filename.bam before the tag
- bam_isoseq -- indicates the data is aligned PacBio Iso-seq reads, expects one /path/filename.bam before the tag
- isoseq -- indicates the data is PacBio Iso-seq reads in fasta or fastq format, expects one /path/filename.(fasta or fastq) before the tag
- mix -- indicates the data is from the sample sequenced with both Illumina RNA-seq provided in fastq format and long reads (Iso-seq or Oxford Nanopore) in fasta/fastq format, expects three /path/filename before the tag
- bam_mix -- indicates the data is from the same sample sequenced with both Illumina RNA-seq provided in bam format and long reads (Iso-seq or Oxford Nanopore) in bam format, expects two /path/filename.bam before the tag
+  fastq -- indicates the data is Illumina RNA-seq in fastq format, expects one or a pair of /path/filename.fastq before the tag
+  fasta -- indicates the data is Illumina RNA-seq in fasta format, expects one or a pair of /path/filename.fasta before the tag
+  bam -- indicates the data is aligned Illumina RNA-seq reads, expects one /path/filename.bam before the tag
+  bam_isoseq -- indicates the data is aligned PacBio Iso-seq reads, expects one /path/filename.bam before the tag
+  isoseq -- indicates the data is PacBio Iso-seq reads in fasta or fastq format, expects one /path/filename.(fasta or fastq) before the tag
+  mix -- indicates the data is from the sample sequenced with both Illumina RNA-seq provided in fastq format and long reads (Iso-seq or Oxford Nanopore) in fasta/fastq format, expects three /path/filename before the tag
+  bam_mix -- indicates the data is from the same sample sequenced with both Illumina RNA-seq provided in bam format and long reads (Iso-seq or Oxford Nanopore) in bam format, expects two /path/filename.bam before the tag
  
- Absence of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line.
+  Absense of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line.
  
--e /path/file fasta file with assembled transcripts from related species
--p /path/file fasta file with protein sequences from (preferrably multiple) related species, uniprot proteins are used of this file is not given>
--m int max intron size, default: 250000
---eviprot use eviprot instead of miniprot for protein-to-genome alignments, this is much slower but more accurate, default: not set
--l liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, sets --eviprot, default: not set
--f perform functional annotation, default: not set
---debug keep intermediate output files, default: not set
---verbose verbose run, default: not set
---version report version and exit, default: not set
+ -e FILE    fasta file with assembled transcripts from related species, default: none
+ -p FILE    fasta file with protein sequences from (preferrably multiple) related species, uniprot proteins are used of this file is not provided, default: none
+ -m INT     max intron size, default: 250000
+ -l         liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set
+ -f         perform functional annotation, default: not set
+ --debug    keep intermediate output files, default: not set
+ --verbose  verbose run, default: not set
+ --version  report version and exit, default: not set
 
--r or -e MUST be supplied.
+ -r or -e MUST be supplied.
 ```
 EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  
 
