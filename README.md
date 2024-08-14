@@ -103,7 +103,7 @@ EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output fil
 
 # Interpreting the output
 
-EviAnn outputs the annotation in GFF3 format, along with translated protein sequences and transcripts in FASTA format. Per GFF3 convention, stop codon is included into the CDS. Every "mRNA" line contains the following attributes:
+EviAnn outputs the annotation in GFF3 format, along with translated protein sequences and transcripts in FASTA format. Per GFF3 convention, stop codon is included into the CDS. Every "mRNA" line for a protein coding transcript contains the following attributes:
 
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
@@ -114,6 +114,11 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code of "=" or"k"
 8. Evidence -- this is the type of evidence that was used to annotate the transcript/CDS.  Possible values are: "complete", meaning that both transcript and protein alignment data was used, "protein_only", meaning that the only protein alignment data was used and "transcript_only" meaning that only transcript data was used.  For "transcript_only" evidence the CDS was derived with TransDecoder with subsequent confirmation by alignment to Uniprot database
 9. Optional: pseudo-true -- this tag is present if EviAnn designated the gene/transcript/CDS is processed pseudo gene
+
+For long non-coding RNAs the "mRNA" line contains the following attributes:
+1. ID -- this is the transcript ID assigned by EviAnn
+2. Parent -- this is the ID of the parent feature
+3. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. The assembled transcripts are listed in \<PREFIX\>.gtf. 
 
 # Example use:
 
