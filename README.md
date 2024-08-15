@@ -122,7 +122,7 @@ For long non-coding RNAs the "mRNA" line contains the following attributes:
 
 # Example use:
 
-## Case 1. Annotation with RNA-seq data and proteins form related species
+## Case 1. Annotation with RNA-seq data and proteins from related species
 
 Suppose that you are annotating genome sequence in genome.fasta.  You have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and protein sequences from several related species that you would like to use for annotation.  The proteins from all related species must be in fasta format.  The individual files containing protein sequences must be concatenated into a single fasta file:
 ```
@@ -141,13 +141,14 @@ paste <(ls $PWD/*_R1.fastq) <(ls $PWD/*_R2.fastq) > paired.txt
 Adjust wildcards in the above example to the names of your read files. If some of all of your RNA-seq data are in fasta format, or aligned in the bam format, you can use the fasta/BAM files and indicate that by adding "fasta" or "bam" tag as the last field on the line, e.g.:
 ```
 $ cat paired_mixed.txt
+/path/rna1_R1.fastq /path/rna1_R2.fastq /path/IsoSeq_rna.fastq
 /path/rna1_R1.fastq /path/rna1_R2.fastq
 /path/rna2_R1.fa /path/rna2_R2.fa fasta
 /path/rna3.bam bam
 ```
 it is important to specify all input files to EviAnn with absolute paths if you are using a version earlier than 1.0.8.  If you wish to run EviAnn with 24 threads, you can now run EviAnn as follows:
 ```
-/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -p /path/paired.txt -r /path/proteins_all.faa
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -r /path/paired.txt -p /path/proteins_all.faa
 ```
 Substitute EviAnn version number for the X's.
 
@@ -166,7 +167,7 @@ cat species*_prot.fa > proteins.faa
 ```
 Then you can run EviAnn with 24 threads (for example) as follows:
 ```
-/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -r $PWD/proteins.faa -l
+/path/EviAnn-X.X.X/bin/eviann.sh -t 24 -g /path/genome.fasta -e $PWD/transcripts.fa -p $PWD/proteins.faa -l
 ```
 Make sure that you use -l switch!  This will optimize internal parameters for liftover run. Substitute EviAnn version number for the X's.
 
@@ -188,7 +189,7 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
 
-## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 100,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.
+## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 100,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.  For best results I recommend usng proteins from at least five related species.
 
 ![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
 
