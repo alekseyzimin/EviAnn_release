@@ -46,7 +46,6 @@ $ cd ../ufasta && git checkout master
 $ cd ..
 $ make
 $ (cd build/inst/bin && tar xzf TransDecoder-v5.7.1.tar.gz)
-$ (cd build/inst/bin && tar xzf snap.tgz && cd SNAP && make)
 ```
 To create a distribution, run 'make install'. Run 'make' to compile the package. The binaries will appear under build/inst/bin.  The name of the distribution package is specified at the top of the Makefile.
 Note that on some systems you may encounter a build error due to lack of xlocale.h file, because it was removed in glibc 2.26.  xlocale.h is used in Perl extension modules used by EviAnn.  To work around this error, you can upgrade the Perl extensions, or create a symlink for xlocale.h to /etc/local.h or /usr/include/locale.h, e.g.:
