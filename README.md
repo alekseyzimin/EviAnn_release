@@ -109,7 +109,7 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
 3. EvidenceProteinID -- this is the ID of the protein that was used as evidence for the CDS annotation for this transcript. If the EvidenceProteinID starts with XLOC... then the transcript was annotated from the transcript alignment alone, please refer to the EvidenceTranscriptID for the evidence
-4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. The assembled transcripts are listed in \<PREFIX\>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
+4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
 5. StartCodon -- this is the start codon in the CDS
 6. StopCodon -- this is the stop codon in the CDS
 7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code of "=" or"k"
@@ -119,7 +119,7 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 For long non-coding RNAs the "mRNA" line contains the following attributes:
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
-3. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. The assembled transcripts are listed in \<PREFIX\>.gtf. 
+3. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf. 
 
 # Example use:
 
