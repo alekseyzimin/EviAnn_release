@@ -85,7 +85,7 @@ Options:
   mix -- indicates the data is from the sample sequenced with both Illumina RNA-seq provided in fastq format and long reads (Iso-seq or Oxford Nanopore) in fasta/fastq format, expects three /path/filename before the tag
   bam_mix -- indicates the data is from the same sample sequenced with both Illumina RNA-seq provided in bam format and long reads (Iso-seq or Oxford Nanopore) in bam format, expects two /path/filename.bam before the tag
  
-  Absense of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line.
+  Absense of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line. If supplying the data as aligned BAM files, please make sure that the HISAT2 alignments were performed keeping information needed for StringTie (--dta option).
  
  -e FILE    fasta file with assembled transcripts from related species, default: none
  -p FILE    fasta file with protein sequences from (preferrably multiple) related species, uniprot proteins are used of this file is not provided, default: none
