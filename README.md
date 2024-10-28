@@ -98,7 +98,7 @@ Options:
 
  -r or -e MUST be supplied.
 ```
-EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will pick up from the latest successfuly completed stage.  
+EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will continue from the last successfuly completed stage.  
 
 EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output files.  If the input genome file is genome.fasta, then the \<PREFIX\> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  
 
