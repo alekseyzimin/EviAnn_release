@@ -125,7 +125,7 @@ For long non-coding RNAs the "mRNA" line contains the following attributes:
 
 ## Case 1. Annotation with RNA-seq data and proteins from related species
 
-Suppose that you are annotating genome sequence in genome.fasta.  You have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and protein sequences from several related species that you would like to use for annotation.  The proteins from all related species must be in fasta format.  The individual files containing protein sequences must be concatenated into a single fasta file:
+Suppose that you are annotating genome sequence in genome.fasta.  You have two pairs of RNA-seq files rna1_R1.fastq, rna1_R2.fastq, rna2_R1.fastq, rna2_R2.fastq, and protein sequences from several related species that you would like to use for annotation.  The proteins from all related species must be in fasta format.  Ideally you want about 5-10 times as many proteins from relates species as you expect to be present in the species you are annotating.  For example, about 100000 - 200000 proteins for an insect, or about 500000 proteins for a typical plant genome or a typical mammalian genome. The individual files containing protein sequences must be concatenated into a single fasta file:
 ```
 cat protein1.faa protein2.faa > proteins_all.faa
 ```
