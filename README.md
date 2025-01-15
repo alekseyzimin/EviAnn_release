@@ -4,6 +4,17 @@ EviAnn (Evidence Annotation) is novel genome annotation software. It is purely e
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
+Benefits of using EviAnn:
+
+1. Easy to install and run
+2. Eviann is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
+3. 5' and 3' UTR annotations for most protein-coding transcripts
+4. Annotates long non-coding RNA's
+5. Processed pseudo-genes are automatically labelled and CDSs for them are not reported
+6. Optional automatic functional annotation with UniProt-SwillProt database (-f switch)
+7. Support for long and short transcriptome sequencing reads and mixed data sets
+8. Support for genomes up to 32Gbp in size
+
 
 # Installation instructions
 
