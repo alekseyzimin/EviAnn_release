@@ -1,12 +1,10 @@
 # EviAnn -- evidence-based eukaryotic genome annotation software
 
-EviAnn (Evidence Annotation) is novel genome annotation software. It is purely evidence-based. EviAnn derives protein-coding gene annotations from RNAseq data and/or transcripts, and alignments of proteins from related species. EviAnn outputs annotations in GFF3 format. EviAnn does not require genome repeats to be soft-masked prior to running annotation. EviAnn is stable and fast. Annotation of a mouse (M.musculus)  genome takes 2.5 hours on a single 24 core Intel Xeon Gold server (assuming input of aligned RNA-seq reads in BAM format and ~346Mb of protein sequences from several related species including human). 
-
-Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
+EviAnn (Evidence Annotation) is novel genome annotation software. It is purely evidence-based. EviAnn derives protein-coding gene annotations from RNAseq data and/or transcripts, and alignments of proteins from related species. EviAnn outputs annotations in GFF3 format. EviAnn does not require genome repeats to be soft-masked prior to running annotation. EviAnn is stable and fast. Annotation of a mouse (M.musculus)  genome takes less than one hour on a single 24 core Intel Xeon Gold server (assuming input of aligned RNA-seq reads in BAM format and ~346Mb of protein sequences from several related species including human). 
 
 Benefits of using EviAnn:
 
-1. Easy to install and run
+1. Easy to install and run, few easy to install dependncies
 2. Eviann is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
 3. 5' and 3' UTR annotations for most protein-coding transcripts
 4. Annotates long non-coding RNA's
@@ -14,7 +12,9 @@ Benefits of using EviAnn:
 6. Optional automatic functional annotation with UniProt-SwillProt database (-f switch)
 7. Support for long and short transcriptome sequencing reads and mixed data sets
 8. Support for genomes up to 32Gbp in size
+9. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be >95% similar on the DNA level.
 
+Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
 # Installation instructions
 
