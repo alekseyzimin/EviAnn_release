@@ -134,7 +134,7 @@ For long non-coding RNAs the "mRNA" line contains the following attributes:
 2. Parent -- this is the ID of the parent feature
 3. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf. 
 
-# Submission of annotations to NCBI with table2asn tool
+# Submission of EviAnn annotation to NCBI GenBank with table2asn tool
 
 EviAnn produces annotations in a proper GFF3 format for ease of submission to NCBI Genbank.  Here are the steps to take to produce NCBI compliant submission input files from EviAnn output:
 
