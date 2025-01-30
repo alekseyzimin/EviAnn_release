@@ -4,15 +4,16 @@ EviAnn (Evidence Annotation) is novel genome annotation software. It is purely e
 
 Benefits of using EviAnn:
 
-1. Easy to install and run, few easy to install dependncies
-2. Eviann is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
-3. 5' and 3' UTR annotations for most protein-coding transcripts
-4. Annotates long non-coding RNA's
-5. Processed pseudo-genes are automatically labelled and CDSs for them are not reported
-6. Optional automatic functional annotation with UniProt-SwillProt database (-f switch)
-7. Support for long and short transcriptome sequencing reads and mixed data sets
-8. Support for genomes up to 32Gbp in size
-9. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be >95% similar on the DNA level.
+1. EviAnn's output is fully compliant with NCBI annotation specifications, annotations can be easily submitted to NCBI GenBank using table2asn tool (see below)
+2. Easy to install and run, few easy to install dependncies
+3. Eviann is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
+4. 5' and 3' UTR annotations for most protein-coding transcripts
+5. Annotates long non-coding RNA's
+6. Processed pseudo-genes are automatically labelled and CDSs for them are not reported
+7. Optional automatic functional annotation with UniProt-SwillProt database (-f switch)
+8. Support for long and short transcriptome sequencing reads and mixed data sets
+9. Support for genomes up to 32Gbp in size
+10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be >95% similar on the DNA level.
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
@@ -132,6 +133,18 @@ For long non-coding RNAs the "mRNA" line contains the following attributes:
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
 3. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf. 
+
+# Submission of annotations to NCBI with table2asn tool
+
+EviAnn produces annotations in a proper GFF3 format for ease of submission to NCBI Genbank.  Here are the steps to take to produce NCBI compliant submission input files from EviAnn output:
+
+1. Fill out the form here to produce template.sbt file: https://submit.ncbi.nlm.nih.gov/genbank/template/submission/
+2. Download and install table2asn tool from NCBI: https://www.ncbi.nlm.nih.gov/genbank/table2asn/
+3. run this command in the EviAnn output folder:
+```
+table2asn -M n -J -c w -euk -t template.sbt -gaps-min 10 -l paired-ends -j "[organism=latin name][isolate=isolate]" -i assembly.fasta -f assembly.fasta.pseudo_label.gff -o output.sqn -Z -V b -locus-tag-prefix XXXX
+```
+This command assumes that the genome assembly fasta file is in the current folder and named "assembly.fasta", and thus the annotation file output by EviAnn is named "assembly.fasta.pseudo_label.gff". You can change the assembly name or path if it differs. XXXX is a four-letter locus tag prefix assigned by GenBank during assembly submission.  This command produces output.sqn and output.gbf files that can be used to submit the annotation to GenBank.
 
 # Example use:
 
