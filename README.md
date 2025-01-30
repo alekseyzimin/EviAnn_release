@@ -127,7 +127,7 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 6. StopCodon -- this is the stop codon in the CDS
 7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code of "=" or"k"
 8. Evidence -- this is the type of evidence that was used to annotate the transcript/CDS.  Possible values are: "complete", meaning that both transcript and protein alignment data was used, "protein_only", meaning that the only protein alignment data was used and "transcript_only" meaning that only transcript data was used.  For "transcript_only" evidence the CDS was derived with TransDecoder with subsequent confirmation by alignment to Uniprot database
-9. Optional: pseudo=true -- this tag is present if EviAnn designated the gene/transcript as processed pseudo gene.  No CDS is output.
+9. Optional: pseudo=true -- this tag is present if EviAnn designated the gene/transcript as processed pseudo gene.  No CDS is output for these transcripts.
 
 For long non-coding RNAs the "mRNA" line contains the following attributes:
 1. ID -- this is the transcript ID assigned by EviAnn
