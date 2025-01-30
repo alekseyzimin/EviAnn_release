@@ -101,6 +101,7 @@ Options:
  -e FILE    fasta file with assembled transcripts from related species, default: none
  -p FILE    fasta file with protein sequences from (preferrably multiple) related species, uniprot proteins are used of this file is not provided, default: none
  -m INT     max intron size, default: 250000
+ -s FILE    fasta file with UniProt-SwissProt proteins to use in functional annotation or if proteins from close relatives are not available.  EviAnn uses a recent version of this protein database internally. To use the most up-to-date version, supply it with this switch. THe database is available at: https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
  -l         liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set
  -f         perform functional annotation, default: not set
  --debug    keep intermediate output files, default: not set
@@ -193,7 +194,7 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI2](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/0912ef8c-bd01-49cb-acbe-16f5b4cd7fff)
 
-## 3. NCBI will find the lineage and species name.  First try using the rightmost link in the lineage list (Malus).  If the subsequent steps result in fewer than 100,000 protein hits, you can move up to the next available lineage level on the left (in this case Maleae).
+## 3. NCBI will find the lineage and species name.  First try using the rightmost link in the lineage list (Malus).  If the subsequent steps result in fewer than 150,000 protein hits, you can move up to the next available lineage level on the left (in this case Maleae).
 
 ![NCBI3](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/4e4698df-de08-4a3c-82fe-221a49e8447d)
 
@@ -201,7 +202,7 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
 
-## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 100,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.  For best results I recommend usng proteins from at least five related species.
+## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 150,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.  For best results I recommend usng proteins from at least five related species.
 
 ![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
 
