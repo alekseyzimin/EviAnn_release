@@ -134,6 +134,34 @@ For long non-coding RNAs the "mRNA" line contains the following attributes:
 2. Parent -- this is the ID of the parent feature
 3. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf. 
 
+Here is an example of annotation of a protein coding gene, a pseudo-gene and a long non-coding RNA, with functional annotation:
+
+```
+NC_004353.4     EviAnn  gene    29462   43759   .       -       .       ID=XLOC_000048;geneID=XLOC_000048;type=protein_coding;Note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
+NC_004353.4     EviAnn  mRNA    32745   43754   .       -       .       ID=XLOC_000048-mRNA-1;Parent=XLOC_000048;EvidenceProteinID=XP_001352289.2;EvidenceTranscriptID=MSTRG_00000148:4:7.7024
+16;StartCodon=atg;StopCodon=TGA;Class==;Evidence=complete;Note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
+NC_004353.4     EviAnn  exon    32745   33125   .       -       .       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  exon    33191   33373   .       -       .       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  exon    35874   36457   .       -       .       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  exon    36516   41285   .       -       .       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  exon    42914   43754   .       -       .       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  CDS     33018   33125   .       -       0       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  CDS     33191   33373   .       -       0       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  CDS     35874   36457   .       -       2       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  CDS     36516   41285   .       -       2       Parent=XLOC_000048-mRNA-1
+NC_004353.4     EviAnn  CDS     42914   43424   .       -       0       Parent=XLOC_000048-mRNA-1
+
+NC_004354.4     EviAnn  gene    23461776        23464767        .       -       .       ID=XLOC_001890;geneID=XLOC_001890;type=protein_coding;pseudo=true;Note=function unknown;
+NC_004354.4     EviAnn  mRNA    23461776        23464767        .       -       .       ID=XLOC_001890-mRNA-1;Parent=XLOC_001890;EvidenceProteinID=XP_046868993.1;EvidenceTranscriptID=MSTRG_00006719:2:3.697180;StartCodon=atg;StopCodon=TAA;Class=k;Evidence=complete;pseudo=true;Note=function unknown;
+NC_004354.4     EviAnn  exon    23461776        23464767        .       -       .       Parent=XLOC_001890-mRNA-1
+
+NC_004353.4     EviAnn  gene    181423  182801  .       -       .       ID=XLOC_000055U_lncRNA;geneID=XLOC_000055U_lncRNA;type=lncRNA;junction_score=0;Note=function unknown;
+NC_004353.4     EviAnn  ncRNA   181423  182801  .       -       .       ID=XLOC_000055U_lncRNA-mRNA-1;Parent=XLOC_000055U_lncRNA;EvidenceTranscriptID=MSTRG_00000163:5:11.129138
+NC_004353.4     EviAnn  exon    181423  181516  .       -       .       Parent=XLOC_000055U_lncRNA-mRNA-1
+NC_004353.4     EviAnn  exon    181569  182801  .       -       .       Parent=XLOC_000055U_lncRNA-mRNA-1
+```
+
+
 # Submission of EviAnn annotation to NCBI GenBank with table2asn tool
 
 EviAnn produces annotations in a proper GFF3 format for ease of submission to NCBI Genbank.  Here are the steps to take to produce NCBI compliant submission input files from EviAnn output:
