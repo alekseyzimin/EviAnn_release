@@ -138,8 +138,7 @@ Here is an example of annotation of a protein coding gene, a pseudo-gene and a l
 
 ```
 NC_004353.4     EviAnn  gene    29462   43759   .       -       .       ID=XLOC_000048;geneID=XLOC_000048;type=protein_coding;Note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
-NC_004353.4     EviAnn  mRNA    32745   43754   .       -       .       ID=XLOC_000048-mRNA-1;Parent=XLOC_000048;EvidenceProteinID=XP_001352289.2;EvidenceTranscriptID=MSTRG_00000148:4:7.7024
-16;StartCodon=atg;StopCodon=TGA;Class==;Evidence=complete;Note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
+NC_004353.4     EviAnn  mRNA    32745   43754   .       -       .       ID=XLOC_000048-mRNA-1;Parent=XLOC_000048;EvidenceProteinID=XP_001352289.2;EvidenceTranscriptID=MSTRG_00000148:4:7.702416;StartCodon=atg;StopCodon=TGA;Class==;Evidence=complete;Note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
 NC_004353.4     EviAnn  exon    32745   33125   .       -       .       Parent=XLOC_000048-mRNA-1
 NC_004353.4     EviAnn  exon    33191   33373   .       -       .       Parent=XLOC_000048-mRNA-1
 NC_004353.4     EviAnn  exon    35874   36457   .       -       .       Parent=XLOC_000048-mRNA-1
