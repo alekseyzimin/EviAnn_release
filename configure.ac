@@ -46,8 +46,8 @@ AS_IF([test x$BOOST_ROOT = xinstall],
 AM_CONDITIONAL([HAVE_BOOST_REGEX], [false])
 
 # Flags for samtools
-AC_SUBST([SAMTOOLS_CFLAGS], ['-I$(includedir)/samtools'])
-AC_SUBST([SAMTOOLS_LIBS], ['-L$(libdir) -lbam'])
+#AC_SUBST([SAMTOOLS_CFLAGS], ['-I$(includedir)/samtools'])
+#AC_SUBST([SAMTOOLS_LIBS], ['-L$(libdir) -lbam'])
 
 # On MacOS X, use _NSGetExecutablePath to find path to own executable
 AC_MSG_CHECKING([for _NSGetExecutablePath])
@@ -94,6 +94,6 @@ AS_IF([test "x$YAGGO" = "x"], [AC_PATH_PROG([YAGGO], [yaggo], [false])])
 
 # Output configuration files
 AC_CONFIG_FILES([Makefile])
-m4_map_args_w([samtools ufasta eviann],
+m4_map_args_w([ufasta eviann],
               [AC_CONFIG_FILES(], [/Makefile)])
 AC_OUTPUT

@@ -1,4 +1,4 @@
-SUBDIRS = samtools ufasta eviann 
+SUBDIRS = ufasta eviann 
 ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = LICENSE

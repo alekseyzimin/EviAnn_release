@@ -1,6 +1,6 @@
 # EviAnn version
 NAME=EviAnn
-VERSION = 2.0.0
+VERSION = 2.0.2
 NCPU = $(shell grep -c '^processor' /proc/cpuinfo 2>/dev/null || sysctl hw.ncpu 2>/dev/null || echo 1)
 
 # Component versions
@@ -37,7 +37,7 @@ $(BUILDDIR)/global: ./configure
 configure: configure.ac
 	autoreconf -fi
 
-SHORTCUTS =  ufasta eviann samtools
+SHORTCUTS =  ufasta eviann
 .PHONY: $(SHORTCUTS)
 $(SHORTCUTS):
 	$(MAKE) -C build/global/$@ install INSTALL="$(UPD_INSTALL)"
