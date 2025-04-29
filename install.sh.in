@@ -23,7 +23,7 @@ echo "Installing TransDecoder" && \
 echo "Installing samtools" && \
 (cd $BINDIR && tar -xzf samtools-1.21.tgz && cd samtools-1.21 && ./configure --prefix=$DEST --without-curses && make -j; make install && cd .. && rm -rf  samtools-1.21.tgz samtools-1.21) && \
 echo "Installing miniprot" && \
-(cd $BINDIR && tar -xzf miniprot.tgz && cd miniprot && make && mv miniprot ../ && cd .. && rm -rf  miniprot miniprot.tgz) && \
+(cd $BINDIR && tar -xzf miniprot.tgz && cd miniprot_source && make && mv miniprot ../ && cd .. && rm -rf  miniprot_source miniprot.tgz) && \
 echo "Installation successful!" || echo "Installation failed"
 
 
