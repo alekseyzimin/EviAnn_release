@@ -1,6 +1,12 @@
 #!/bin/sh
 
-set -xe
+set -e
+
+if tty -s < /dev/fd/1 2> /dev/null; then
+  GC='\e[0;32m'
+  RC='\e[0;31m'
+  NC='\e[0m'
+fi
 
 ROOT=`pwd -P`
 [ -z "$DEST" ] && DEST="$ROOT"
@@ -21,9 +27,11 @@ export PKG_CONFIG_PATH=$LIBDIR/pkgconfig:$PKG_CONFIG_PATH
 echo "Installing TransDecoder" && \
 (cd $BINDIR && tar -xzf TransDecoder-v5.7.1.tar.gz && rm -f  TransDecoder-v5.7.1.tar.gz) && \
 echo "Installing samtools" && \
-(cd $BINDIR && tar -xzf samtools-1.21.tgz && cd samtools-1.21 && ./configure --prefix=$DEST --disable-lzma --without-curses && make -j; make install || echo "samtools installation failed, please make sure samtoold are available on the system PATH for running EviAnn" && cd .. && rm -rf  samtools-1.21.tgz samtools-1.21) && \
+(cd $BINDIR && tar -xzf samtools-1.21.tgz && cd samtools-1.21 && ./configure --prefix=$DEST --disable-lzma --without-curses && make -j; make install || echo -e "${RC}[$dddd]${NC} samtools installation failed, please make sure samtools are available on the system PATH for running EviAnn" && cd .. && rm -rf  samtools-1.21.tgz samtools-1.21) && \
 echo "Installing miniprot" && \
 (cd $BINDIR && tar -xzf miniprot.tgz && cd miniprot_source && make && mv miniprot ../ && cd .. && rm -rf  miniprot_source miniprot.tgz) && \
+echo "Checking static evecutables" && \
+if [ $(bin/makeblastdb -h 1>/dev/null 2>&1; echo $?) -gt 0 ];then echo -e "${RC}[$dddd]${NC} makeblastdb, tblastn and blastp executables are not compatible, please make sure they are available on the system PATH for running EviAnn" && rm -f bin/{makeblastdb,blastp,tblastn};fi && \
 echo "Installation successful!" || echo "Installation failed"
 
 
