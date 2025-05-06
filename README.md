@@ -29,24 +29,24 @@ The installation script will configure and make all necessary packages.  The Evi
 
 ## Dependencies:
 
-EviAnn requires the following external dependencies to be installed and available on the $PATH:
+EviAnn requires the following external dependencies to be installed and available on the system $PATH:
 
 1. minimap2: https://github.com/lh3/minimap2
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
 
-Here is the list of the dependencies included with the package:
+Here is the list of the dependencies included with the EviAnn package:
 
 1. StringTie version 2.2.1 -- static executable
 2. gffread version 0.12.7 -- static executable
 3. gffread version 0.12.6 -- static executable
-4. blastp version 2.13.0+ -- static executable
-5. tblastn version 2.13.0 -- static executable
-6. makeblastdb version 2.13.0 -- static executable
+4. blastp version 2.8.1+ -- static executable
+5. tblastn version 2.8.1 -- static executable
+6. makeblastdb version 2.8.1 -- static executable
 7. exonerate version 2.4.0 -- static executable
 8. TransDecoder version 5.7.1
-9. samtools version 0.1.20
-10. ufasta version 1
-11. miniprot v0.13 -- static executable
+9. samtools version 1.15.1 -- compiles on install
+10. ufasta version 1.0 -- compiles on install
+11. miniprot v0.15-r270 -- compiles on install
 
 ## Only for developers
 
@@ -60,7 +60,9 @@ $ git submodule update
 $ cd ../ufasta && git checkout master
 $ cd ..
 $ make
-$ (cd build/inst/bin && tar xzf TransDecoder-v5.7.1.tar.gz)
+$ (cd build/inst/bin && tar -xzf TransDecoder-v5.7.1.tar.gz)
+$ (cd build/inst/bin && tar -xzf samtools-1.15.1.tgz && cd samtools-1.15.1 && ./configure --prefix=$PWD --disable-lzma --without-curses && make -j; make install; cd .. && rm -rf  samtools-1.15.1.tgz samtools-1.15.1)
+$ (cd build/inst/bin && tar -xzf miniprot.tgz && cd miniprot_source && make && mv miniprot ../ && cd .. && rm -rf  miniprot_source miniprot.tgz)
 ```
 To create a distribution, run 'make install'. Run 'make' to compile the package. The binaries will appear under build/inst/bin.  The name of the distribution package is specified at the top of the Makefile.
 Note that on some systems you may encounter a build error due to lack of xlocale.h file, because it was removed in glibc 2.26.  xlocale.h is used in Perl extension modules used by EviAnn.  To work around this error, you can upgrade the Perl extensions, or create a symlink for xlocale.h to /etc/local.h or /usr/include/locale.h, e.g.:
@@ -72,9 +74,9 @@ ln -s /usr/include/locale.h /usr/include/xlocale.h
 ```
 Usage: eviann.sh [options]
 Options:
- -t INT     number of threads, default: 1
- -g FILE    MANDATORY:genome fasta file default: none
- -r FILE    file containing list of filenames of reads from transcriptome sequencing experiments, default: none
+ -t INT           number of threads, default: 1
+ -g FILE          MANDATORY:genome fasta file default: none
+ -r FILE          file containing list of filenames of reads from transcriptome sequencing experiments, default: none
  
   FORMAT OF THIS FILE:
   Each line in the file must refer to sequencing data from a single experiment.
@@ -97,19 +99,25 @@ Options:
   mix -- indicates the data is from the sample sequenced with both Illumina RNA-seq provided in fastq format and long reads (Iso-seq or Oxford Nanopore) in fasta/fastq format, expects three /path/filename before the tag
   bam_mix -- indicates the data is from the same sample sequenced with both Illumina RNA-seq provided in bam format and long reads (Iso-seq or Oxford Nanopore) in bam format, expects two /path/filename.bam before the tag
  
-  Absense of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line. If supplying the data as aligned BAM files, please make sure that the HISAT2 alignments were performed keeping information needed for StringTie (--dta option).
+  Absense of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line.
  
- -e FILE    fasta file with assembled transcripts from related species, default: none
- -p FILE    fasta file with protein sequences from (preferrably multiple) related species, uniprot proteins are used of this file is not provided, default: none
- -m INT     max intron size, default: 250000
- -s FILE    fasta file with UniProt-SwissProt proteins to use in functional annotation or if proteins from close relatives are not available.  EviAnn uses a recent version of this protein database internally. To use the most up-to-date version, supply it with this switch. THe database is available at: https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
- -l         liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set
- -f         perform functional annotation, default: not set
- --debug    keep intermediate output files, default: not set
- --verbose  verbose run, default: not set
- --version  report version and exit, default: not set
+ -e FILE               fasta file with assembled transcripts from related species, default: none
+ -p FILE               fasta file with protein sequences from (at least 5-10) related species, uniprot proteins are used of this file is not provided, default: none
+ -s FILE               fasta file with UniProt-SwissProt proteins to use in functional annotation or if proteins from close relatives are not available.  EviAnn will download the most recent version automatically. 
+                         To use your preferred version, supply it with this switch. The database is available at:
+                         https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+ -m INT                max intron size, default: 250000
+ --partial             include transcripts with partial (mising start or stop codon) CDS in the output
+ --lncrnamintpm FLOAT  minimum TPM to include non-coding transcript into the annotation as lncRNA, default: 3.0
+ --liftover            liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set
+ -f|--functional       perform functional annotation, default: not set
+ --extra FILE          extra features to add from an external GFF file.  Feautures MUST have gene records.  Any features that overlap with existing annotations will be ignored
+ --debug               keep intermediate output files, default: not set
+ --verbose             verbose run, default: not set
+ --version             report version and exit.
+ --help                display this message and exit.
 
- -r or -e MUST be supplied.
+ IMPORTANT!!! -r or -e MUST be supplied.
 ```
 EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will continue from the last successfuly completed stage.  
 
@@ -121,7 +129,7 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
-3. EvidenceProteinID -- this is the ID of the protein that was used as evidence for the CDS annotation for this transcript. If the EvidenceProteinID starts with XLOC... then the transcript was annotated from the transcript alignment alone, please refer to the EvidenceTranscriptID for the evidence
+3. EvidenceProteinID -- this is the ID of the protein that was used as evidence for the CDS annotation for this transcript. The protein ID is followed by its functional description, if available. If the EvidenceProteinID starts with XLOC... then the transcript was annotated from the transcript alignment alone, please refer to the EvidenceTranscriptID for the evidence
 4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
 5. StartCodon -- this is the start codon in the CDS
 6. StopCodon -- this is the stop codon in the CDS
