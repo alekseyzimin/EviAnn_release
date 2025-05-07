@@ -13,7 +13,7 @@ Benefits of using EviAnn:
 7. Optional automatic functional annotation with UniProt-SwillProt database (-f switch)
 8. Support for long and short transcriptome sequencing reads and mixed data sets
 9. Support for genomes up to 32Gbp in size
-10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be >95% similar on the DNA level.
+10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be on average >95% similar on the DNA level.
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
