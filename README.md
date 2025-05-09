@@ -13,7 +13,7 @@ Benefits of using EviAnn:
 7. Optional automatic functional annotation with UniProt-SwillProt database (-f switch)
 8. Support for long and short transcriptome sequencing reads and mixed data sets
 9. Support for genomes up to 32Gbp in size
-10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be >95% similar on the DNA level.
+10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be on average >95% similar on the DNA level.
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
@@ -133,7 +133,7 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
 5. StartCodon -- this is the start codon in the CDS
 6. StopCodon -- this is the stop codon in the CDS
-7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code of "=" or"k"
+7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code "=" or "k"
 8. Evidence -- this is the type of evidence that was used to annotate the transcript/CDS.  Possible values are: "complete", meaning that both transcript and protein alignment data was used, "protein_only", meaning that the only protein alignment data was used and "transcript_only" meaning that only transcript data was used.  For "transcript_only" evidence the CDS was derived with TransDecoder with subsequent confirmation by alignment to Uniprot database
 9. Optional: pseudo=true -- this tag is present if EviAnn designated the gene/transcript as processed pseudo gene.  No CDS is output for these transcripts.
 
