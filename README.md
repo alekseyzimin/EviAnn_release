@@ -242,17 +242,17 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI2](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/0912ef8c-bd01-49cb-acbe-16f5b4cd7fff)
 
-## 3. NCBI will find the lineage and species name.  First try using the rightmost link in the lineage list (Malus).  If the subsequent steps result in fewer than 150,000 protein hits, you can move up to the next available lineage level on the left (in this case Maleae).
+## 3. NCBI will find the lineage and species name.  First try using the rightmost link in the lineage list (Malus).  If the subsequent steps result in fewer than 400,000 protein hits, you can move up to the next available lineage level on the left (in this case Maleae).
 
-![NCBI3](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/4e4698df-de08-4a3c-82fe-221a49e8447d)
+![NCBI3](https://github.com/user-attachments/assets/1a3ff0ec-e818-4cc4-9637-dd1b44f7a990)
 
 ## 4. Click on the lineage name in bold.
 
 ![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
 
-## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 150,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.  For best results I recommend usng proteins from at least five related species.
+## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 400,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.  For best results I recommend usng proteins from at least ten related species with a total number of input proteins exceeding the expected number of proteins for the species about 10-fold.
 
-![NCBI5](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/12c96ac5-41a9-4853-bc87-034e84b36927)
+![NCBI5](https://github.com/user-attachments/assets/cad4a2e4-b64f-4e30-b595-f46e7baf26aa)
 
 ## 6. Click "Send to", choose "File" format "FASTA", and click "Create File" button.  Save the file as "proteins.faa".  You can use this file as input proteins to EviAnn ( -r proteins.faa ).
 
