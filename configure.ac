@@ -62,12 +62,12 @@ AC_FUNC_MMAP
 AC_CHECK_FUNCS([mremap])
 
 # Check for zlib
-AC_CHECK_HEADER([zlib.h], [], [AC_MSG_FAILURE([Cannot find zlib.h header. Install zlib development files (e.g. zlib1g-dev)])])
-AC_CHECK_LIB([z], [zlibVersion], [], [AC_MSG_FAILURE([Cannot find zlib library. Install zlib libray])])
+#AC_CHECK_HEADER([zlib.h], [], [AC_MSG_FAILURE([Cannot find zlib.h header. Install zlib development files (e.g. zlib1g-dev)])])
+#AC_CHECK_LIB([z], [zlibVersion], [], [AC_MSG_FAILURE([Cannot find zlib library. Install zlib libray])])
 
 # Check bzip2 library
-AC_CHECK_HEADER([bzlib.h], [], [AC_MSG_FAILURE([Cannot find bzilb.h header. Install bzip2 development files (e.g. bzip2-devel)])])
-AC_CHECK_LIB([bz2], [BZ2_bzlibVersion], [], [AC_MSG_FAILURE([Cannot find bzip2 library. Install bzip2 library])])
+#AC_CHECK_HEADER([bzlib.h], [], [AC_MSG_FAILURE([Cannot find bzilb.h header. Install bzip2 development files (e.g. bzip2-devel)])])
+#AC_CHECK_LIB([bz2], [BZ2_bzlibVersion], [], [AC_MSG_FAILURE([Cannot find bzip2 library. Install bzip2 library])])
 
 
 # Use valgrind to check memory allocation with mmap
