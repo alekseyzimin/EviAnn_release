@@ -13,7 +13,7 @@ $ export LD_LIBRARY_PATH=/usr/lib64:/lib64
 $ ./install.sh
 #mamba install TransDecoder minimap2 hisat2 parallel #or conda install
 ```
-The installation script will configure and make all necessary packages.  The EviAnn executables will appear under bin/.  You can run EviAnn from anywhere by executing /path_to/EviAnn-X.X.X/bin/eviann.sh
+The installation script will configure and make all necessary packages.  The EviAnn executables will appear under zgtools-EviAnn_2.0.2/.  You can run EviAnn from anywhere by executing zgtools-EviAnn_2.0.2/zgtools
 
 ## Dependencies:
 
