@@ -31,10 +31,14 @@ Here is the list of the dependencies included with the EviAnn package:
 5. tblastn version 2.8.1+ -- static executable
 6. makeblastdb version 2.8.1+ -- static executable
 7. exonerate version 2.4.0 -- static executable
-8. TransDecoder version 5.7.1
+8. TransDecoder version 5.7.1 -- compiles on install
 9. samtools version 1.15.1 -- compiles on install
 10. ufasta version 1.0 -- compiles on install
 11. miniprot v0.15-r270 -- compiles on install
+
+# Prepare Data
+You can prepare the data as I do: RNA data must end with .fq.gz or .fastq.gz, and protein files must end with .pep.fa. No GFF file is needed, only the protein file is required.
+<div align="center"><img src="https://s2.loli.net/2025/05/17/PpWTgnz9wuBRviG.png" alt="Your Image Description" /></div>
 
 # Usage:
 ```
