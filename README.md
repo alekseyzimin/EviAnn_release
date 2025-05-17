@@ -11,7 +11,7 @@ $ tar -xvzf zgtools-EviAnn_2.0.2.tar.gz
 $ cd zgtools-EviAnn_2.0.2
 $ export LD_LIBRARY_PATH=/usr/lib64:/lib64
 $ ./install.sh
-#mamba install TransDecoder minimap2 hisat2 parallel #or conda install
+#mamba install TransDecoder minimap2 hisat2 #or conda install
 ```
 The installation script will configure and make all necessary packages.  The EviAnn executables will appear under zgtools-EviAnn_2.0.2/.  You can run EviAnn from anywhere by executing zgtools-EviAnn_2.0.2/zgtools
 
@@ -21,7 +21,6 @@ EviAnn requires the following external dependencies to be installed and availabl
 
 1. minimap2: https://github.com/lh3/minimap2
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
-3. parallel: http://www.gnu.org/software/parallel/
 
 Here is the list of the dependencies included with the EviAnn package:
 
