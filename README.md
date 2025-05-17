@@ -55,7 +55,7 @@ Example1:
 
 # Run log
 
-<div align="center"><img src="https://s2.loli.net/2025/05/17/paD7ST1mKel8buQ.png" alt="Your Image Description" /></div>
+<div align="center"><img src="https://s2.loli.net/2025/05/17/6xRF41vai3OtAqb.png" alt="Your Image Description" /></div>
 
 # Interpreting the output
 
