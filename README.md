@@ -53,6 +53,10 @@ Example1:
         zgtools EviAnn 00.used_data/genome.fa 00.used_data/00.homo_data/ 00.used_data/01.RNA_data/ 60 3
 ```
 
+# Run log
+
+<div align="center"><img src="https://s2.loli.net/2025/05/17/paD7ST1mKel8buQ.png" alt="Your Image Description" /></div>
+
 # Interpreting the output
 
 EviAnn outputs the annotation in GFF3 format, along with translated protein sequences and transcripts in FASTA format. Per GFF3 convention, stop codon is included into the CDS. Every "mRNA" line for a protein coding transcript contains the following attributes:
