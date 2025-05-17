@@ -21,6 +21,7 @@ EviAnn requires the following external dependencies to be installed and availabl
 
 1. minimap2: https://github.com/lh3/minimap2
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
+3. parallel: http://www.gnu.org/software/parallel/
 
 Here is the list of the dependencies included with the EviAnn package:
 
