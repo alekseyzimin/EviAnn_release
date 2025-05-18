@@ -58,7 +58,7 @@ Example1:
 ```
 
 # Run log
-Here are the results of a test conducted on a fish genome. EviAnn estimated the final gene count to be approximately twenty-five thousand, which is consistent with the published version that also reports around twenty-five thousand genes.
+Here are the results of a test conducted on a fish genome. EviAnn estimated the final gene count to be approximately 25,000 , which is consistent with the published version that also reports around 25,000 genes.
 <div align="center"><img src="https://s2.loli.net/2025/05/18/sVYTAckwehzGnKR.png" alt="Your Image Description" /></div>
 
 # Interpreting the output
