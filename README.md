@@ -58,8 +58,8 @@ Example1:
 ```
 
 # Run log
-
-<div align="center"><img src="https://s2.loli.net/2025/05/17/6xRF41vai3OtAqb.png" alt="Your Image Description" /></div>
+Here are the results of a test conducted on a fish genome. EviAnn estimated the final gene count to be approximately twenty-five thousand, which is consistent with the published version that also reports around twenty-five thousand genes.
+<div align="center"><img src="https://s2.loli.net/2025/05/18/sVYTAckwehzGnKR.png" alt="Your Image Description" /></div>
 
 # Interpreting the output
 
