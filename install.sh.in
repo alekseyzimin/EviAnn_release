@@ -31,7 +31,7 @@ echo "Installing TransDecoder" && \
 echo "Installing miniprot" && \
 (cd $BINDIR && tar -xzf miniprot.tgz && cd miniprot_source && make && mv miniprot ../ && cd .. && rm -rf  miniprot_source miniprot.tgz) && \
 echo "Checking static executables" && \
-if [ $(bin/makeblastdb -h 1>/dev/null 2>&1; echo $?) -gt 0 ];then echo -e "${RC}[WARNING!!! installed makeblastdb, tblastn and blastp executables are not compatible, please make sure they are available on the system PATH for running EviAnn]${NC}" && rm -f bin/{makeblastdb,blastp,tblastn};fi
+if [ $(bin/makeblastdb -h 1>/dev/null 2>&1; echo $?) -gt 0 ];then echo -e "${RC}[WARNING!!! installed makeblastdb, blastp executables are not compatible, please make sure they are available on the system PATH for running EviAnn; you can try downloading a version older than 2.2.31 from https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/]${NC}" && rm -f bin/{makeblastdb,blastp};fi
 if [ $(bin/stringtie -h 1>/dev/null 2>&1; echo $?) -gt 0 ];then echo -e "${RC}[WARNING!!! installed stringtie executable is not compatible, please make sure stringtie is available on the system PATH for running EviAnn]${NC}" && rm -f bin/stringtie;fi
 if [ $(bin/samtools --help 1>/dev/null 2>&1; echo $?) -gt 0 ];then echo -e "${RC}[WARNING!!! installed samtools executable is not compatible, please make sure samtools are available on the system PATH for running EviAnn]${NC}" && rm -f bin/samtools;fi
 echo "Installation successful!" || echo "Installation failed"
