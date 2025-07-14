@@ -41,14 +41,11 @@ Here is the list of the dependencies included with the EviAnn package:
 1. StringTie version 3.0.0 -- static executable
 2. gffread version 0.12.7 -- static executable
 3. gffread version 0.12.6 -- static executable
-4. blastp version 2.8.1+ -- static executable
-5. tblastn version 2.8.1+ -- static executable
-6. makeblastdb version 2.8.1+ -- static executable
-7. exonerate version 2.4.0 -- static executable
-8. TransDecoder version 5.7.1
-9. samtools version 1.15.1 -- static executable
-10. ufasta version 1.0 -- compiles on install
-11. miniprot v0.15-r270 -- compiles on install
+4. makeblastdb and blastp version 2.8.1+ -- executables provided by NCBI, if you get a warning on install that these executables are not compatible, try getting an earlier version from https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/
+5. TransDecoder version 5.7.1 -- modified to remove dependency on URI::Escape
+6. samtools version 1.15.1 -- static executable
+7. ufasta version 1.0 -- compiles on install
+8. miniprot v0.15-r270 -- compiles on install
 
 ## Only for developers
 
@@ -102,18 +99,17 @@ Options:
  
   Absense of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line.
  
- -e FILE               fasta file with assembled transcripts from related species, default: none
- -p FILE               fasta file with protein sequences from (preferrably multiple) related species, uniprot proteins are used of this file is not provided, default: none
+ -e FILE               fasta file with assembled transcripts from related species to be used in the annotation, default: none
+ -p FILE               fasta file with protein sequences from several (ideally 10+) related species, uniprot proteins are used of this file is not provided, default: none
  -s FILE               fasta file with UniProt-SwissProt proteins to use in functional annotation or if proteins from close relatives are not available. 
                          EviAnn will download the most recent version of this database automatically.
                          To use a different version, supply it with this switch. The database is available at:
                          https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
- -m INT                max intron size, default: auto-determined as sqrt(genome size in kb)*1000; this setting will override automatically estimated value
+ -m INT                max intron size, default: auto-determined as sqrt(genome size in kb)*1000
  --partial             include transcripts with partial (mising start or stop codon) CDS in the output
  -d INT                set ploidy for the genome, this value is used in estimating the maximum intron size, default 2
  -c FILE               GFF file with CDS sequences for THIS genome to be used in annotations. Each CDS must have gene/transcript/mRNA AND exon AND CDS attributes
  --lncrnamintpm FLOAT  minimum TPM to include non-coding transcript into the annotation as lncRNA, default: 1.0
- --liftover            liftover mode, optimizes internal parameters for annotation liftover; also useful when supplying proteins from a single species, default: not set
  -f|--functional       perform functional annotation, default: not set
  --mito_contigs FILE   file with the list of input contigs to be treated as mitochondrial with different genetic code (stop is AGA,AGG,TAA,TAG)
  --extra FILE          extra features to add from an external GFF file.  Feautures MUST have gene records.  Any features that overlap with existing annotations will be ignored
