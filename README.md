@@ -41,14 +41,11 @@ Here is the list of the dependencies included with the EviAnn package:
 1. StringTie version 3.0.0 -- static executable
 2. gffread version 0.12.7 -- static executable
 3. gffread version 0.12.6 -- static executable
-4. blastp version 2.8.1+ -- static executable
-5. tblastn version 2.8.1+ -- static executable
-6. makeblastdb version 2.8.1+ -- static executable
-7. exonerate version 2.4.0 -- static executable
-8. TransDecoder version 5.7.1
-9. samtools version 1.15.1 -- static executable
-10. ufasta version 1.0 -- compiles on install
-11. miniprot v0.15-r270 -- compiles on install
+4. makeblastdb and blastp version 2.8.1+ -- executables provided by NCBI, if you get a warning on install that these executables are not compatible, try getting an earlier version from https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/
+5. TransDecoder version 5.7.1 -- modified to remove dependency on URI::Escape
+6. samtools version 1.15.1 -- static executable
+7. ufasta version 1.0 -- compiles on install
+8. miniprot v0.15-r270 -- compiles on install
 
 ## Only for developers
 
