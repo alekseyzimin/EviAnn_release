@@ -113,7 +113,7 @@ Options:
  -f|--functional       perform functional annotation, default: not set
  --mito_contigs FILE   file with the list of input contigs to be treated as mitochondrial with different genetic code (stop is AGA,AGG,TAA,TAG)
  --extra FILE          extra features to add from an external GFF file.  Feautures MUST have gene records.  Any features that overlap with existing annotations will be ignored
- --debug               keep intermediate output files, default: not set
+ --debug               keep more intermediate output files, default: not set
  --verbose             verbose run, default: not set
  --version             report version and exit.
  --help                display this message and exit.
