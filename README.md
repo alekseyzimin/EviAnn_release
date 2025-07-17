@@ -16,12 +16,25 @@ Benefits of using EviAnn:
 8. Support for long and short transcriptome sequencing reads and mixed data sets
 9. Support for genomes up to 32Gbp in size
 10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be on average >95% similar on the DNA level.
+11. Supports annotation of mitochondria
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
 # Installation instructions
 
-To install, first download the latest distribution tarball EviAnn-X.X.X.tar.gz (not one of the Source code files!) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
+## Bioconda
+EviAnn is now available through Bioconda.  To install EviAnn we recommend to first create new environment called eviann:
+
+conda create -n eviann
+
+then install:
+
+conda install eviann
+
+Now you can use EviAnn (run eviann.sh).  To switch in and out of the EviAnn environment, use "conda activate eviann" or "conda deactivate".
+
+## GitHub
+To install from GitHub, first download the latest distribution tarball EviAnn-X.X.X.tar.gz (not one of the Source code files!) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
 ```
 $ tar xvzf EviAnn-X.X.X.tar.gz
 $ cd EviAnn-X.X.X
@@ -29,9 +42,9 @@ $ ./install.sh
 ```
 The installation script will configure and make all necessary packages.  The EviAnn executables will appear under bin/.  You can run EviAnn from anywhere by executing /path_to/EviAnn-X.X.X/bin/eviann.sh
 
-## Dependencies:
 
-EviAnn requires the following external dependencies to be installed and available on the system $PATH:
+## Dependencies:
+If you choose to install directly from GitHub package, EviAnn requires the following external dependencies to be installed and available on the system $PATH:
 
 1. minimap2: https://github.com/lh3/minimap2
 2. HISAT2: https://github.com/DaehwanKimLab/hisat2
@@ -113,7 +126,7 @@ Options:
  -f|--functional       perform functional annotation, default: not set
  --mito_contigs FILE   file with the list of input contigs to be treated as mitochondrial with different genetic code (stop is AGA,AGG,TAA,TAG)
  --extra FILE          extra features to add from an external GFF file.  Feautures MUST have gene records.  Any features that overlap with existing annotations will be ignored
- --debug               keep intermediate output files, default: not set
+ --debug               keep more intermediate output files, default: not set
  --verbose             verbose run, default: not set
  --version             report version and exit.
  --help                display this message and exit.
