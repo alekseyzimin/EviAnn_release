@@ -31,7 +31,7 @@ then install:
 
 conda install eviann
 
-Now you can use EviAnn.  To switch in and out of to the EviAnn environment, use conda activate eviann or conda deactivate eviann.
+Now you can use EviAnn.  To switch in and out of to the EviAnn environment, use "conda activate eviann" or "conda deactivate".
 
 ## GitHub
 To install from GitHub, first download the latest distribution tarball EviAnn-X.X.X.tar.gz (not one of the Source code files!) from the github release page https://github.com/alekseyzimin/EviAnn_release/releases. Replace X's below with the version number. Then run:
