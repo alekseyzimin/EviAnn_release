@@ -137,6 +137,10 @@ EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any 
 
 EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output files.  If the input genome file is genome.fasta, then the \<PREFIX\> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  
 
+# Limitations of EviAnn
+
+EviAnn annotation will be invalid or will fail of a genome contains one or more sequence longer than 2,147,483,647 bp.  I am working on resolution of this limitation, as for some genomes (e.g. conifers) a single chromosome may exceed that length.
+
 # Interpreting the output
 
 EviAnn outputs the annotation in GFF3 format, along with translated protein sequences and transcripts in FASTA format. Per GFF3 convention, stop codon is included into the CDS. Every "mRNA" line for a protein coding transcript contains the following attributes:
