@@ -8,7 +8,7 @@ Benefits of using EviAnn:
 
 1. EviAnn's output is fully compliant with NCBI annotation specifications, annotations can be easily submitted to NCBI GenBank using table2asn tool (see below)
 2. Easy to install and run, few easy to install dependncies
-3. Eviann is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
+3. EviAnn is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
 4. 5' and 3' UTRs are present in most protein-coding transcripts
 5. Annotates long non-coding RNA's
 6. Processed pseudo-genes are automatically labelled and CDSs for them are not reported
@@ -16,7 +16,7 @@ Benefits of using EviAnn:
 8. Support for long and short transcriptome sequencing reads and mixed data sets
 9. Support for genomes up to 32Gbp in size
 10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be on average >95% similar on the DNA level.
-11. Supports annotation of mitochondria
+11. Supports annotation of organelles (mitochondria and chloroplast)
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
