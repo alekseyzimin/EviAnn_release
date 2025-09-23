@@ -2,13 +2,13 @@
 
 EviAnn (Evidence Annotation) is novel genome annotation software. It is purely evidence-based. EviAnn derives protein-coding gene and long non-coding RNA annotations from RNA-seq data and/or transcripts, and alignments of proteins from related species. EviAnn outputs annotations in GFF3 format. EviAnn does not require genome repeats to be soft-masked prior to running annotation. EviAnn is stable and fast. Annotation of a mouse (M.musculus)  genome takes less than one hour on a single 24 core Intel Xeon Gold server (assuming input of aligned RNA-seq reads in BAM format and ~346Mb of protein sequences from several related species including human). 
 
-EviAnn manuscript is under review. The preprint is available here: https://www.biorxiv.org/content/10.1101/2025.05.07.652745v1
+EviAnn manuscript is under review. The preprint is available here: https://www.biorxiv.org/content/10.1101/2025.05.07.652745v2
 
 Benefits of using EviAnn:
 
 1. EviAnn's output is fully compliant with NCBI annotation specifications, annotations can be easily submitted to NCBI GenBank using table2asn tool (see below)
 2. Easy to install and run, few easy to install dependncies
-3. Eviann is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
+3. EviAnn is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
 4. 5' and 3' UTRs are present in most protein-coding transcripts
 5. Annotates long non-coding RNA's
 6. Processed pseudo-genes are automatically labelled and CDSs for them are not reported
@@ -16,9 +16,13 @@ Benefits of using EviAnn:
 8. Support for long and short transcriptome sequencing reads and mixed data sets
 9. Support for genomes up to 32Gbp in size
 10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be on average >95% similar on the DNA level.
-11. Supports annotation of mitochondria
+11. Supports annotation of organelles (mitochondria and chloroplast)
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
+
+# Limitations of EviAnn
+
+EviAnn annotation will be invalid or will fail of a genome contains one or more sequence longer than 2,147,483,647 bp.  I am working on resolution of this limitation, as for some genomes (e.g. conifers) a single chromosome may exceed that length.
 
 # Installation instructions
 
@@ -136,10 +140,6 @@ Options:
 EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will continue from the last successfuly completed stage.  
 
 EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output files.  If the input genome file is genome.fasta, then the \<PREFIX\> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  
-
-# Limitations of EviAnn
-
-EviAnn annotation will be invalid or will fail of a genome contains one or more sequence longer than 2,147,483,647 bp.  I am working on resolution of this limitation, as for some genomes (e.g. conifers) a single chromosome may exceed that length.
 
 # Interpreting the output
 
