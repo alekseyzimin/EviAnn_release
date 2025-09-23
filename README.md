@@ -20,6 +20,10 @@ Benefits of using EviAnn:
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
+# Limitations of EviAnn
+
+EviAnn annotation will be invalid or will fail of a genome contains one or more sequence longer than 2,147,483,647 bp.  I am working on resolution of this limitation, as for some genomes (e.g. conifers) a single chromosome may exceed that length.
+
 # Installation instructions
 
 ## Bioconda
@@ -136,10 +140,6 @@ Options:
 EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will continue from the last successfuly completed stage.  
 
 EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output files.  If the input genome file is genome.fasta, then the \<PREFIX\> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  
-
-# Limitations of EviAnn
-
-EviAnn annotation will be invalid or will fail of a genome contains one or more sequence longer than 2,147,483,647 bp.  I am working on resolution of this limitation, as for some genomes (e.g. conifers) a single chromosome may exceed that length.
 
 # Interpreting the output
 
