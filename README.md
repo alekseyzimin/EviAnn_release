@@ -20,9 +20,6 @@ Benefits of using EviAnn:
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
-# Limitations of EviAnn
-
-EviAnn annotation will be invalid or will fail of a genome contains one or more sequence longer than 2,147,483,647 bp.  I am working on resolution of this limitation, as for some genomes (e.g. conifers) a single chromosome may exceed that length.
 
 # Installation instructions
 
