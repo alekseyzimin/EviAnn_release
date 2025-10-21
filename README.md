@@ -17,12 +17,10 @@ Benefits of using EviAnn:
 9. Support for genomes up to 32Gbp in size
 10. If one or more close relatives are annotated, annotation is possible with transcripts and proteins from the related genomes, without any RNA-seq data.  Genomes must be on average >95% similar on the DNA level.
 11. Supports annotation of organelles (mitochondria and chloroplast)
+12. Supports genomes with chromosomes longer than 2G bp
 
 Development of EviAnn is supported in part by NSF grant IOS-2432298, and by NIH grants R01-HG006677 and R35-GM130151.
 
-# Limitations of EviAnn
-
-EviAnn annotation will be invalid or will fail of a genome contains one or more sequence longer than 2,147,483,647 bp.  I am working on resolution of this limitation, as for some genomes (e.g. conifers) a single chromosome may exceed that length.
 
 # Installation instructions
 
