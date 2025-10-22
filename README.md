@@ -29,7 +29,9 @@ EviAnn is now available through Bioconda.  To install EviAnn we recommend to fir
 
 conda create -n eviann
 
-then install:
+then activate and install:
+
+conda activate eviann
 
 conda install eviann
 
