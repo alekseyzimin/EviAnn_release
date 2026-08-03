@@ -7,7 +7,7 @@ EviAnn manuscript is under review. The preprint is available here: https://www.b
 Benefits of using EviAnn:
 
 1. EviAnn's output is fully compliant with NCBI annotation specifications, annotations can be easily submitted to NCBI GenBank using table2asn tool (see below)
-2. Easy to install and run, few easy to install dependncies
+2. Easy to install and run, few easy to install dependencies
 3. EviAnn is very fast -- annotation of a mammalian genome takes less than an hour, after all RNA-seq data has been aligned
 4. 5' and 3' UTRs are present in most protein-coding transcripts
 5. Annotates long non-coding RNA's
@@ -114,7 +114,7 @@ Options:
   mix -- indicates the data is from the sample sequenced with both Illumina RNA-seq provided in fastq format and long reads (Iso-seq or Oxford Nanopore) in fasta/fastq format, expects three /path/filename before the tag
   bam_mix -- indicates the data is from the same sample sequenced with both Illumina RNA-seq provided in bam format and long reads (Iso-seq or Oxford Nanopore) in bam format, expects two /path/filename.bam before the tag
  
-  Absense of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line.
+  Absence of a tag assumes fastq tag and expects one or a pair of /path/filename.fastq on the line.
  
  -e FILE               fasta file with assembled transcripts from related species to be used in the annotation, default: none
  -p FILE               fasta file with protein sequences from several (ideally 10+) related species, uniprot proteins are used of this file is not provided, default: none
@@ -123,13 +123,13 @@ Options:
                          To use a different version, supply it with this switch. The database is available at:
                          https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
  -m INT                max intron size, default: auto-determined as sqrt(genome size in kb)*1000
- --partial             include transcripts with partial (mising start or stop codon) CDS in the output
+ --partial             include transcripts with partial (missing start or stop codon) CDS in the output
  -d INT                set ploidy for the genome, this value is used in estimating the maximum intron size, default 2
  -c FILE               GFF file with CDS sequences for THIS genome to be used in annotations. Each CDS must have gene/transcript/mRNA AND exon AND CDS attributes
  --lncrnamintpm FLOAT  minimum TPM to include non-coding transcript into the annotation as lncRNA, default: 1.0
  -f|--functional       perform functional annotation, default: not set
  --mito_contigs FILE   file with the list of input contigs to be treated as mitochondrial with different genetic code (stop is AGA,AGG,TAA,TAG)
- --extra FILE          extra features to add from an external GFF file.  Feautures MUST have gene records.  Any features that overlap with existing annotations will be ignored
+ --extra FILE          extra features to add from an external GFF file.  Features MUST have gene records.  Any features that overlap with existing annotations will be ignored
  --debug               keep more intermediate output files, default: not set
  --verbose             verbose run, default: not set
  --version             report version and exit.
@@ -137,7 +137,7 @@ Options:
 
  IMPORTANT!!! -r or -e MUST be supplied.
 ```
-EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will continue from the last successfuly completed stage.  
+EviAnn saves progress from all intermediate steps.  If EviAnn run stops for any reason (computer rebooted or out of disk space), just re-run the same command and EviAnn will continue from the last successfully completed stage.  
 
 EviAnn uses the input genome file name as \<PREFIX\> for intermediate/output files.  If the input genome file is genome.fasta, then the \<PREFIX\> is "genome.fasta", and final annotation files are named genome.fasta.pseudo_label.gff, genome.fasta.proteins.fasta and genome.fasta.transcripts.fasta. These files contain annotation is GFF3 format, sequences of proteins (amino-acids) and transcripts.  
 
@@ -233,7 +233,7 @@ Substitute EviAnn version number for the X's.
 
 ## Case 2. No RNA-seq data, annotation with transcripts and proteins from one or more related species
 
-Suppose again that you are annotating genome sequence in genome.fasta.   In this scenario we assume that you have gff files containing the annotations of the related species that you are going to use as evidence. This scenario can also be descibed as "lifting over" annotation from one or more related species. The genome sequences for these species are also needed. The first step is to create transcripts and proteins files for each species with the following command:
+Suppose again that you are annotating genome sequence in genome.fasta.   In this scenario we assume that you have gff files containing the annotations of the related species that you are going to use as evidence. This scenario can also be described as "lifting over" annotation from one or more related species. The genome sequences for these species are also needed. The first step is to create transcripts and proteins files for each species with the following command:
 ```
 /eviann_path/bin/gffread -W -y species1_prot.faa -w species1_transc.fa -g species1_genome.fa species1.gff
 /eviann_path/bin/gffread -W -y species2_prot.faa -w species2_transc.fa -g species2_genome.fa species2.gff
@@ -268,7 +268,7 @@ Make sure that you use -l switch!  This will optimize internal parameters for li
 
 ![NCBI4](https://github.com/alekseyzimin/EviAnn_release/assets/27226909/dce4b7a6-68da-4602-ab49-14fb0a29116b)
 
-## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 400,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.  For best results I recommend usng proteins from at least ten related species with a total number of input proteins exceeding the expected number of proteins for the species about 10-fold.
+## 5. Look for the red "Protein" word in the table on the upper right. If the number to the right of the link is > 400,000, click on the number, otherwise go back to step 3 and choose lineage that is higher up in the tree.  For best results I recommend using proteins from at least ten related species with a total number of input proteins exceeding the expected number of proteins for the species about 10-fold.
 
 ![NCBI5](https://github.com/user-attachments/assets/cad4a2e4-b64f-4e30-b595-f46e7baf26aa)
 
