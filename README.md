@@ -62,7 +62,8 @@ Here is the list of the dependencies included with the EviAnn package:
 5. TransDecoder version 5.7.1 -- modified to remove dependency on URI::Escape
 6. samtools version 1.15.1 -- static executable
 7. ufasta version 1.0 -- compiles on install
-8. miniprot v0.15-r270 -- compiles on install
+8. miniprot version 0.15-r270 -- compiles on install
+9. SNAP version 2006-07-28 -- compiles on install
 
 ## Only for developers
 
@@ -147,24 +148,24 @@ EviAnn outputs the annotation in GFF3 format, along with translated protein sequ
 
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
-3. EvidenceProteinID -- this is the ID of the protein that was used as evidence for the CDS annotation for this transcript. The protein ID is followed by its functional description, if available. If the EvidenceProteinID starts with XLOC... then the transcript was annotated from the transcript alignment alone, please refer to the EvidenceTranscriptID for the evidence
-4. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf.  The EvidenceTrasncriptID can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
-5. StartCodon -- this is the start codon in the CDS
-6. StopCodon -- this is the stop codon in the CDS
-7. Class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code "=" or "k"
-8. Evidence -- this is the type of evidence that was used to annotate the transcript/CDS.  Possible values are: "complete", meaning that both transcript and protein alignment data was used, "protein_only", meaning that the only protein alignment data was used and "transcript_only" meaning that only transcript data was used.  For "transcript_only" evidence the CDS was derived with TransDecoder with subsequent confirmation by alignment to Uniprot database
+3. evidence_protein_id -- this is the ID of the protein that was used as evidence for the CDS annotation for this transcript. The protein ID is followed by its functional description, if available. If the evidence_protein_id starts with XLOC... then the transcript was annotated from the transcript alignment alone, please refer to the EvidenceTranscriptID for the evidence
+4. evidence_transcript_id -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf.  The evidence_transcript_id can be a source protein ID if Evidence is "protein_only".  For "complete" and "transcript_only" evidence, the format of the EvidenceTranscriptID is \<transcript_name\>:\<number of RNA-seq experiments containing the transcript\>:\<maximum TPM\>
+5. start_codon -- this is the start codon in the CDS
+6. stop_codon -- this is the stop codon in the CDS
+7. class -- this is the match class of the source protein alignment to the transcript;  most reliable transcripts have class code "=" or "k"
+8. evidence -- this is the type of evidence that was used to annotate the transcript/CDS.  Possible values are: "complete", meaning that both transcript and protein alignment data was used, "protein_only", meaning that the only protein alignment data was used and "transcript_only" meaning that only transcript data was used.  For "transcript_only" evidence the CDS was derived with TransDecoder with subsequent confirmation by alignment to Uniprot database
 9. Optional: pseudo=true -- this tag is present if EviAnn designated the gene/transcript as processed pseudo gene.  No CDS is output for these transcripts.
 
 For long non-coding RNAs the "mRNA" line contains the following attributes:
 1. ID -- this is the transcript ID assigned by EviAnn
 2. Parent -- this is the ID of the parent feature
-3. EvidenceTranscriptID -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf. 
+3. evidence_transcript_id -- this is the ID of the transcript that was used as evidence for the annotation for this transcript. All transcripts assembled from the evidence are listed in \<PREFIX\>.gtf. 
 
 Here is an example of annotation of a protein coding gene, a pseudo-gene and a long non-coding RNA, with functional annotation:
 
 ```
 NC_004353.4     EviAnn  gene    29462   43759   .       -       .       ID=XLOC_000048;geneID=XLOC_000048;type=protein_coding;Note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
-NC_004353.4     EviAnn  mRNA    32745   43754   .       -       .       ID=XLOC_000048-mRNA-1;Parent=XLOC_000048;EvidenceProteinID=XP_001352289.2;EvidenceTranscriptID=MSTRG_00000148:4:7.702416;StartCodon=atg;StopCodon=TGA;Class==;Evidence=complete;Note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
+NC_004353.4     EviAnn  mRNA    32745   43754   .       -       .       ID=XLOC_000048-mRNA-1;Parent=XLOC_000048;evidence_protein_id=XP_001352289.2;evidence_transcript_id=MSTRG_00000148:4:7.702416;start_codon=atg;stop_codon=TGA;class==;evidence=complete;note=Similar to PLXNA2: Plexin-A2 (Homo sapiens);
 NC_004353.4     EviAnn  exon    32745   33125   .       -       .       Parent=XLOC_000048-mRNA-1
 NC_004353.4     EviAnn  exon    33191   33373   .       -       .       Parent=XLOC_000048-mRNA-1
 NC_004353.4     EviAnn  exon    35874   36457   .       -       .       Parent=XLOC_000048-mRNA-1
@@ -177,11 +178,11 @@ NC_004353.4     EviAnn  CDS     36516   41285   .       -       2       Parent=X
 NC_004353.4     EviAnn  CDS     42914   43424   .       -       0       Parent=XLOC_000048-mRNA-1
 
 NC_004354.4     EviAnn  gene    23461776        23464767        .       -       .       ID=XLOC_001890;geneID=XLOC_001890;type=protein_coding;pseudo=true;Note=function unknown;
-NC_004354.4     EviAnn  mRNA    23461776        23464767        .       -       .       ID=XLOC_001890-mRNA-1;Parent=XLOC_001890;EvidenceProteinID=XP_046868993.1;EvidenceTranscriptID=MSTRG_00006719:2:3.697180;StartCodon=atg;StopCodon=TAA;Class=k;Evidence=complete;pseudo=true;Note=function unknown;
+NC_004354.4     EviAnn  mRNA    23461776        23464767        .       -       .       ID=XLOC_001890-mRNA-1;Parent=XLOC_001890;evidence_protein_id=XP_046868993.1;evidence_transcript_id=MSTRG_00006719:2:3.697180;start_codon=atg;stop_codon=TAA;class=k;evidence=complete;pseudo=true;Note=function unknown;
 NC_004354.4     EviAnn  exon    23461776        23464767        .       -       .       Parent=XLOC_001890-mRNA-1
 
 NC_004353.4     EviAnn  gene    181423  182801  .       -       .       ID=XLOC_000055U_lncRNA;geneID=XLOC_000055U_lncRNA;type=lncRNA;junction_score=0;Note=function unknown;
-NC_004353.4     EviAnn  ncRNA   181423  182801  .       -       .       ID=XLOC_000055U_lncRNA-mRNA-1;Parent=XLOC_000055U_lncRNA;EvidenceTranscriptID=MSTRG_00000163:5:11.129138
+NC_004353.4     EviAnn  ncRNA   181423  182801  .       -       .       ID=XLOC_000055U_lncRNA-mRNA-1;Parent=XLOC_000055U_lncRNA;evidence_transcript_id=MSTRG_00000163:5:11.129138
 NC_004353.4     EviAnn  exon    181423  181516  .       -       .       Parent=XLOC_000055U_lncRNA-mRNA-1
 NC_004353.4     EviAnn  exon    181569  182801  .       -       .       Parent=XLOC_000055U_lncRNA-mRNA-1
 ```
