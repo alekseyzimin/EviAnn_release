@@ -1,6 +1,6 @@
 # EviAnn version
 NAME=EviAnn
-VERSION = 2.0.7
+VERSION = 2.0.8
 NCPU = $(shell grep -c '^processor' /proc/cpuinfo 2>/dev/null || sysctl hw.ncpu 2>/dev/null || echo 1)
 
 # Component versions
