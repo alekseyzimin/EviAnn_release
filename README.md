@@ -69,14 +69,16 @@ Here is the list of the dependencies included with the EviAnn package:
 
 ## Only for developers
 
-You can clone the development tree, but then there are dependencies such as swig and yaggo (http://www.swig.org/ and https://github.com/gmarcais/yaggo) that must be available on the PATH:
+You can clone the development tree, but then there are dependencies such as swig and yaggo (http://www.swig.org/ and https://github.com/gmarcais/yaggo). The dependencies must be available on the PATH:
 
 ```
 $ git clone https://github.com/alekseyzimin/EviAnn_release
 $ cd EviAnn_release
 $ git submodule init
 $ git submodule update
-$ cd ../ufasta && git checkout master
+$ cd ufasta && git checkout master
+$ cd ..
+$ cd eviann && git checkout main
 $ cd ..
 $ make
 $ (cd build/inst/bin && tar -xzf TransDecoder-v5.7.1.tar.gz)
